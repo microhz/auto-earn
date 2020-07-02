@@ -363,7 +363,9 @@ public class ByteDance extends ChromeSupport {
             return rate;
         } else if (rate >= 0.6 && rate < 0.67) {
             rate += 0.02;
-        } else if (rate >= 0.67 && rate <= 0.8) {
+        } else if (rate >= 0.67 && rate < 0.75){
+            rate += 0.02;
+        } else if (rate >= 0.75 && rate < 0.8){
             rate += 0.05;
         } else if (rate > 0.8) {
             rate += 0.07;

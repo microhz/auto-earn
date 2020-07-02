@@ -5,7 +5,6 @@ import com.auto.common.ChromeSupport;
 import com.auto.common.ImageDownload;
 import com.auto.common.LogUtils;
 import com.auto.pojo.ImageVideoBO;
-import com.auto.pojo.UploadBO;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.commons.io.FileUtils;
@@ -202,9 +201,9 @@ public class InstagramClient extends ChromeSupport {
     }
 
     public void batchDownloadFromConfig() throws IOException {
-        List<ImageVideoBO> imageVideoBOList = JSON.parseArray(FileUtils.readFileToString(new ClassPathResource("img.json").getFile(), Charset.defaultCharset()), ImageVideoBO.class);
-        List<ImageVideoBO> videoBOList = JSON.parseArray(FileUtils.readFileToString(new ClassPathResource("video.json").getFile(), Charset.defaultCharset()), ImageVideoBO.class);
 
+        List<ImageVideoBO> imageVideoBOList = convert2ImageVideo(FileUtils.readFileToString(new ClassPathResource("img.text").getFile(), Charset.defaultCharset()));
+        List<ImageVideoBO> videoBOList = convert2ImageVideo(FileUtils.readFileToString(new ClassPathResource("video.text").getFile(), Charset.defaultCharset()));
         init();
 
         for (int i = 0; i < imageVideoBOList.size(); i++) {
@@ -264,6 +263,24 @@ public class InstagramClient extends ChromeSupport {
         }
 
         closeDriver();
+    }
+
+    private List<ImageVideoBO> convert2ImageVideo(String readFileToString) {
+        String[] split = readFileToString.split("\n");
+
+        if (split.length == 0 || StringUtils.isBlank(readFileToString.replace(" ", ""))) {
+            return Lists.newArrayList();
+        }
+        List<ImageVideoBO> imageVideoBOList = Lists.newArrayList();
+        for (String s : split) {
+            ImageVideoBO imageVideoBO = new ImageVideoBO();
+            String[] content = s.split("@");
+            imageVideoBO.setUrl(content[0]);
+            imageVideoBO.setContent(content[1]);
+
+            imageVideoBOList.add(imageVideoBO);
+        }
+        return imageVideoBOList;
     }
 
 }

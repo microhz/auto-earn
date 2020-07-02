@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  */
 public class ImageDownload {
 
-    private static final String IMAGE_DOWNLOAD_FILE = "img.json";
+    private static final String IMAGE_DOWNLOAD_FILE = "img.text";
     private static final String MAIN_DOMAIN_ADDRESS = "https://www.instagram.com/";
 
     public void executeFromConfig() {
