@@ -13,6 +13,7 @@ import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -88,8 +89,24 @@ public class ByteDance extends ChromeSupport {
     private void publish() {
         WebElement publicEl = webDriver.findElement(By.xpath("//a[text()='发布']"));
         publicEl.click();
-        LogUtils.print("published");
+        LogUtils.print("尝试去发布");
         shortWait();
+
+        checkPublishSuccessStatus();
+    }
+
+    private void checkPublishSuccessStatus() {
+        WebElement wordNumberEl = webDriver.findElement(By.className("words-number"));
+        String text = wordNumberEl.getText();
+        String[] split = text.split("/");
+        String inputWordSize = split[0];
+        if (Integer.valueOf(inputWordSize) > 0) {
+            LogUtils.print("可能发布太快了，等一下再重试发布");
+            sleep(RandomUtils.nextInt(200, 800));
+            publish();
+        } else {
+            LogUtils.print("发布成功");
+        }
     }
 
     private void updateTextContent(String content) {
@@ -212,6 +229,7 @@ public class ByteDance extends ChromeSupport {
                 WebElement statusEl = webDriver.findElement(By.xpath("//span[@class='upload-status']"));
                 if (statusEl.getText().equals("上传成功")) {
                     LogUtils.print("上传成功..");
+                    sleep(1000);
                     break;
                 }
             } catch (NoSuchElementException e) {}
@@ -428,6 +446,7 @@ public class ByteDance extends ChromeSupport {
         if (videoList.size() != 0) {
             batchUpdateVideo(videoList);
         }
+
         closeDriver();
     }
 
@@ -435,6 +454,19 @@ public class ByteDance extends ChromeSupport {
         LogUtils.print("开始批量上传视频 %s", videoList);
         for (String videoFile : videoList) {
             // 视频只取第一个
+            try {
+                updateVideo(videoFile);
+                sleep(1000);
+            } catch (Exception e) {
+                LogUtils.errorPrint(e ,"上传 " + videoFile + " 失败， 继续下一个视频");
+                sleep(500);
+                continue;
+            }
+        }
+    }
+
+    private void updateVideo(String videoFile) {
+        try {
             String[] split = videoFile.split("-");
             String fileName = split[0];
             if (split.length > 1) {
@@ -444,6 +476,11 @@ public class ByteDance extends ChromeSupport {
 
             updateVideoContent(ChromeSupport.BATCH_UPDATE_PATH, fileName.replace(".mp4", ""));
             updateTextContent(fileName.replace(".mp4", ""));
+            publish();
+        } catch (UnhandledAlertException e) {
+            LogUtils.print("出现弹窗警告 %s 再等一下", e.getAlertText());
+            sleep(500);
+            // 递归
             publish();
         }
     }
