@@ -235,6 +235,9 @@ public class InstagramClient extends ChromeSupport {
 
             ImageDownload imageDownload = new ImageDownload();
             List<String> downUrlList = Lists.newArrayList(imageSet);
+            if (imageVideoBO.getContent().length() > 30) {
+                throw new RuntimeException(imageVideoBO.getContent().length() + " 标题太长");
+            }
             if (imageSet.size() == 1) {
                 imageDownload.dowloadImage(BATCH_UPDATE_PATH, downUrlList.get(0), imageVideoBO.getContent());
             } else {

@@ -281,9 +281,8 @@ public class ByteDance extends ChromeSupport {
             WebElement img = getRobotTestImage();
             String imgUrl = img.getAttribute("src");
             imageDownload.dowloadImage(imgUrl, CURRENT_ROBOT_TEST_IMAGE);
-
-            double sliteRate = getSlideRate(CURRENT_ROBOT_TEST_IMAGE);
-            moveButton(sliteRate);
+            double slideRate = getSlideRate(CURRENT_ROBOT_TEST_IMAGE);
+            moveButton(slideRate);
         } catch (Throwable e) {
             return true;
         }
@@ -322,25 +321,34 @@ public class ByteDance extends ChromeSupport {
 
     private double getSlideRate(String imageName) {
         try {
+            /*
+            获取图片的长宽，构建二维数组遍历
+             */
             BufferedImage image = ImageIO.read(new File(ChromeSupport.INS_PATH + imageName + ".jpeg"));
             int width = image.getWidth();
             int height = image.getHeight();
 
+            // 标记较白的点为凹陷轮廓边缘点
             List<Integer> widthEdgeList = Lists.newArrayList();
 
             for (int i = 0;i < width;i ++) {
                 for (int j = 0; j < height; j++) {
+                    // 这里分别获取RGB值的，红，绿，蓝 的值
                     int rgb = image.getRGB(i, j);
                     int redV = (rgb & 0xff0000) >> 16;
                     int greenV = (rgb & 0xff00) >> 8;
                     int blueV = (rgb & 0xff);
+
+                    // 分析发现，数值越大，越接近白色，因此这里分别判断三个值，达到230即可标记为一个较白的点
                     if (redV > 230 && greenV > 230 && blueV > 230) {
                         widthEdgeList.add(i);
                     }
                 }
             }
 
-            // 统计最多的witdh
+            /*
+            统计凹陷最多的横坐标
+             */
             Map<Integer, List<Integer>> map = widthEdgeList.stream().collect(Collectors.groupingBy(Integer::intValue));
             ArrayList<List<Integer>> lists = Lists.newArrayList(map.values());
 
@@ -352,10 +360,11 @@ public class ByteDance extends ChromeSupport {
                 }
                 return 0;
             });
+            // 左竖线横坐标
             int leftEdge = lists.get(0).get(0);
+            // 右竖线横坐标
             int rightEdge = lists.get(1).get(0);
-
-
+            // 得到凹陷正中央
             int slidePixel = (rightEdge + leftEdge) / 2;
             // 滑动比例
             double rate = Double.valueOf(slidePixel) / Double.valueOf(width);
@@ -392,7 +401,6 @@ public class ByteDance extends ChromeSupport {
         }
         LogUtils.print("kill robot slide rate %s, zoom rate %s", originRate, rate);
         return rate;
-
     }
 
     public void openToutiao() throws InterruptedException {
