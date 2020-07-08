@@ -100,7 +100,7 @@ public class ByteDance extends ChromeSupport {
         String inputWordSize = split[0];
         if (Integer.valueOf(inputWordSize) > 0) {
             LogUtils.print("可能发布太快了，等一下再重试发布");
-            sleep(RandomUtils.nextInt(200, 800));
+            sleep(RandomUtils.nextInt(1000, 3000));
             publish();
         } else {
             LogUtils.print("发布成功");
@@ -482,7 +482,7 @@ public class ByteDance extends ChromeSupport {
 
             updateVideoContent(ChromeSupport.BATCH_UPDATE_PATH, fileName.replace(".mp4", ""));
             // -0是视频序列尾号
-            updateTextContent(fileName.replace("-0.mp4", ""));
+            updateTextContent(fileName.replace("-0.mp4", "").replace(".mp4", ""));
             publish();
         } catch (UnhandledAlertException e) {
             LogUtils.print("出现弹窗警告 %s 再等一下", e.getAlertText());
