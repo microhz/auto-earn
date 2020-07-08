@@ -42,10 +42,10 @@ public class App {
             autoDownloadAndUpload();
 //
 //            // 下载youtube视频
-//            downloadYoutube("nL1ADYo_be8", "横滨", 2160);
+//            downloadYoutube("dHYhK2tV-uQ", "印度6x6", 720);
 //
 //            // 上传头条视频 TODO 下载进度条
-//            updateToutiaoVideo("gaoxiao6", "世界最长的水上滑道 第一视角真刺激");
+//            updateToutiaoVideo("印度6x6", "奔跑在印度街头的奔驰6x6，周围的车都是弟弟", true);
 //            https://www.instagram.com/p/CB8suMbB4EW/?utm_source=ig_web_button_share_sheet
 
 //            downLoadInstagramVideo("https://www.instagram.com/p/CCEFvdWHSre/?utm_source=ig_web_button_share_sheet", "v12");

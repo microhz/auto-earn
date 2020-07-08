@@ -278,8 +278,15 @@ public class InstagramClient extends ChromeSupport {
         for (String s : split) {
             ImageVideoBO imageVideoBO = new ImageVideoBO();
             String[] content = s.split("@");
-            imageVideoBO.setUrl(content[0]);
-            imageVideoBO.setContent(content[1]);
+            if (content.length == 2) {
+                imageVideoBO.setUrl(content[0]);
+                imageVideoBO.setContent(content[1]);
+            } else {
+                // 可能是从手机来的
+                content = s.split(" ");
+                imageVideoBO.setUrl(content[0]);
+                imageVideoBO.setContent(content[content.length - 1]);
+            }
 
             imageVideoBOList.add(imageVideoBO);
         }

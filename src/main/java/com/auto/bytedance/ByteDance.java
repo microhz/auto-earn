@@ -1,7 +1,6 @@
 package com.auto.bytedance;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.auto.common.ChromeSupport;
 import com.auto.common.Consumer;
 import com.auto.common.ImageDownload;
@@ -21,7 +20,6 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -483,7 +481,8 @@ public class ByteDance extends ChromeSupport {
             }
 
             updateVideoContent(ChromeSupport.BATCH_UPDATE_PATH, fileName.replace(".mp4", ""));
-            updateTextContent(fileName.replace(".mp4", ""));
+            // -0是视频序列尾号
+            updateTextContent(fileName.replace("-0.mp4", ""));
             publish();
         } catch (UnhandledAlertException e) {
             LogUtils.print("出现弹窗警告 %s 再等一下", e.getAlertText());
