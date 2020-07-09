@@ -26,6 +26,8 @@ import java.util.stream.Collectors;
  */
 public class Youtube extends ChromeSupport {
 
+    private static final String FFMPEG_PATH = "/Users/mapeichuan/Downloads/auto-earn-dowload/video/origin/";
+
     public void downloadVideo(String videoId) throws IOException, YoutubeException {
         downloadVideo(videoId, "", true);
     }
@@ -103,8 +105,27 @@ public class Youtube extends ChromeSupport {
         video.download(audioFormat, new File(YOUTUBE_PATH_ORIGIN), fileName);
     }
 
-    public void mergeAudioAndVideo(String fileName, String audioName) {
+    public void mergeAudioAndVideo(String fileName, String audioName) throws InterruptedException, IOException {
+        // ./ffmpeg -i test2.mp4 -i test2-audio.mp4  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 output.mp4
+        Runtime terminal = Runtime.getRuntime();
+        LogUtils.print("开始合成视频 {} {} ", fileName, audioName);
+        Runtime.getRuntime().exec(buildCommand(fileName, audioName));
+        LogUtils.print("合成视频 {} 与 {} 音频完毕", fileName, audioName);
+        terminal.freeMemory();
+    }
 
+    private String buildCommand(String fileName, String audioName) {
+        String videoAbsolutePath = YOUTUBE_PATH_ORIGIN + fileName;
+        String audioAboslutePath = YOUTUBE_PATH_ORIGIN + audioName;
+        String result = FFMPEG_PATH + "/ffmpeg" +  " -i " +  videoAbsolutePath + ".mp4 -i " + audioAboslutePath + ".mp4  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 " + YOUTUBE_PATH_ORIGIN+ "合成" + fileName + ".mp4";
+        LogUtils.print("最终执行命令 {} ", result);
+        return result;
+    }
+
+    private void release(Process process) throws IOException {
+        process.getOutputStream().close();
+        process.getInputStream().close();
+        process.getErrorStream().close();
     }
 
     interface FormatQuantityGet {

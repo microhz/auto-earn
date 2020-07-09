@@ -1,5 +1,7 @@
 package com.auto.common;
 
+import com.alibaba.fastjson.JSONObject;
+
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -15,7 +17,17 @@ import java.security.NoSuchAlgorithmException;
 public class LogUtils {
 
     public static void print(String content, Object ... params) {
-        System.out.println(String.format(content, params));
+        if (content.contains("%s")) {
+            System.out.println(String.format(content, params));
+        } else if (content.contains("{}")) {
+            StringBuffer sb = new StringBuffer();
+            String[] split = content.split("\\{\\}");
+            for (int i = 0; i < params.length; i++) {
+                sb.append(split[i]).append(params[i]);
+            }
+            sb.append(split[params.length]);
+            System.out.println(sb);
+        }
     }
 
     public static void errorPrint(Throwable e, String errorMsg) {
