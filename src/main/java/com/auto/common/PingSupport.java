@@ -2,7 +2,6 @@ package com.auto.common;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.concurrent.*;
 
@@ -29,8 +28,8 @@ public class PingSupport {
         try {
             Process process = runtime.exec("PING " + url);
             boolean isOK = getPingResult(process);
-            asyncPrint(process.getErrorStream());
-            asyncPrint(process.getInputStream());
+            TerminalUtils.asyncPrint(process.getErrorStream());
+            TerminalUtils.asyncPrint(process.getInputStream());
             return isOK;
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,17 +81,4 @@ public class PingSupport {
         System.setProperty("https.proxyPort", proxyPort);
     }
 
-    private static void asyncPrint(InputStream inputStream) {
-        new Thread(() -> {
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                String len;
-                while ((len = bufferedReader.readLine()) != null) {
-                    LogUtils.print(Thread.currentThread().getName() + ":" + len);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
-    }
 }

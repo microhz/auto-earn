@@ -2,6 +2,7 @@ package com.auto.youtube;
 
 import com.auto.common.ChromeSupport;
 import com.auto.common.LogUtils;
+import com.auto.common.TerminalUtils;
 import com.github.kiulian.downloader.OnYoutubeDownloadListener;
 import com.github.kiulian.downloader.YoutubeDownloader;
 import com.github.kiulian.downloader.YoutubeException;
@@ -23,10 +24,14 @@ import java.util.stream.Collectors;
  * @author : jihai
  * @date : 2020/6/24
  * @description :
+ *
+ *
+ * 视频音频合成命令
+ * ./ffmpeg -i 横滨.mp4 -i 横滨-audio.mp4  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 合成横滨.mp4
  */
 public class Youtube extends ChromeSupport {
 
-    private static final String FFMPEG_PATH = "/Users/mapeichuan/Downloads/auto-earn-dowload/video/origin/";
+    private static final String FFMPEG_PATH = "/Users/mapeichuan/Downloads/auto-earn-dowload/video/origin/ffmpeg";
 
     public void downloadVideo(String videoId) throws IOException, YoutubeException {
         downloadVideo(videoId, "", true);
@@ -105,27 +110,56 @@ public class Youtube extends ChromeSupport {
         video.download(audioFormat, new File(YOUTUBE_PATH_ORIGIN), fileName);
     }
 
-    public void mergeAudioAndVideo(String fileName, String audioName) throws InterruptedException, IOException {
+    public void mergeAudioAndVideo(String fileName, String audioName) throws Exception {
         // ./ffmpeg -i test2.mp4 -i test2-audio.mp4  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 output.mp4
-        Runtime terminal = Runtime.getRuntime();
         LogUtils.print("开始合成视频 {} {} ", fileName, audioName);
-        Runtime.getRuntime().exec(buildCommand(fileName, audioName));
+        // 处理webm
+        processWebm(fileName);
+        Process exec = Runtime.getRuntime().exec(mergeVideoAudio(fileName, audioName));
+        exec.waitFor();
         LogUtils.print("合成视频 {} 与 {} 音频完毕", fileName, audioName);
-        terminal.freeMemory();
     }
 
-    private String buildCommand(String fileName, String audioName) {
+    private String mergeVideoAudio(String fileName, String audioName) throws Exception {
         String videoAbsolutePath = YOUTUBE_PATH_ORIGIN + fileName;
         String audioAboslutePath = YOUTUBE_PATH_ORIGIN + audioName;
-        String result = FFMPEG_PATH + "/ffmpeg" +  " -i " +  videoAbsolutePath + ".mp4 -i " + audioAboslutePath + ".mp4  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 " + YOUTUBE_PATH_ORIGIN+ "合成" + fileName + ".mp4";
+
+        String result = FFMPEG_PATH +  " -i " +  videoAbsolutePath + ".mp4" + " -i " + audioAboslutePath + ".mp4  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 " + YOUTUBE_PATH_ORIGIN+ "合成" + fileName + ".mp4";
         LogUtils.print("最终执行命令 {} ", result);
         return result;
     }
 
-    private void release(Process process) throws IOException {
-        process.getOutputStream().close();
-        process.getInputStream().close();
-        process.getErrorStream().close();
+    private void processWebm(String fileName) throws Exception {
+        String absolutePath = YOUTUBE_PATH_ORIGIN + fileName;
+        File file = new File(absolutePath + ".mp4");
+        if (file.exists()) {
+            return ;
+        }
+        file = new File(absolutePath + ".webm");
+        if (!file.exists()) {
+            LogUtils.print("下载的视频 {} 找不到", absolutePath);
+            throw new Exception("视频不存在");
+        }
+        LogUtils.print("下载视频为webm格式，需要进行转换成mp4，请耐心等待");
+        // 需要转换
+        Process exec = Runtime.getRuntime().exec(parseWebm2Mp4(absolutePath, fileName));
+        TerminalUtils.asyncPrint(exec.getInputStream());
+        exec.waitFor();
+        LogUtils.print("转换结束");
+    }
+
+
+    /**
+     *  视频转换命令
+     *  ./ffmpeg -i 冲绳.webm -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" output.mp4
+     * @param absolutePath
+     * @param fileName
+     * @return
+     */
+    private String[] parseWebm2Mp4(String absolutePath, String fileName) {
+        String result = FFMPEG_PATH + " -i " + absolutePath + ".webm -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" " + YOUTUBE_PATH_ORIGIN + fileName + ".mp4";
+        LogUtils.print("执行格式转换命令: {}", result);
+        return new String[]{"sh","-c", result};
     }
 
     interface FormatQuantityGet {

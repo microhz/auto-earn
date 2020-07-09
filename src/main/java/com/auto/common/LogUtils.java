@@ -25,8 +25,12 @@ public class LogUtils {
             for (int i = 0; i < params.length; i++) {
                 sb.append(split[i]).append(params[i]);
             }
-            sb.append(split[params.length]);
+            if (split.length > params.length) {
+                sb.append(split[params.length]);
+            }
             System.out.println(sb);
+        } else {
+            System.out.println(content);
         }
     }
 

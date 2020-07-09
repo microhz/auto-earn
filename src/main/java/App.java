@@ -25,6 +25,7 @@ public class App {
     // TODO  大视频文件 SSL peer shut down incorrectly 问题
     // TODO 单个视频页面多视频问题
     // TODO 视频素材卖钱
+    // TODO 分段问题，转换mp4阻塞问题
     // 视频批量
     public static void main(String[] args) {
         try {
@@ -43,7 +44,7 @@ public class App {
 //            autoDownloadAndUpload();
 //
 //            // 下载youtube视频
-            downloadYoutube("nL1ADYo_be8", "横滨", 1080);
+            downloadYoutube("pc27fivPszM", "杭州", 2160);
 //
 //            // 上传头条视频 TODO 下载进度条
 //            updateToutiaoVideo("印度6x6", "奔跑在印度街头的奔驰6x6，周围的车都是弟弟", true);
@@ -83,7 +84,7 @@ public class App {
         }
     }
 
-    private static void downloadYoutube(String videoId, String fileName, int quantity) throws IOException, YoutubeException, InterruptedException {
+    private static void downloadYoutube(String videoId, String fileName, int quantity) throws Exception {
         Youtube youtube = new Youtube();
         youtube.downloadVideo(videoId, fileName, quantity);
         if (quantity > 720) {

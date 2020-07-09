@@ -177,4 +177,5 @@ public abstract class ChromeSupport {
             checkPageStatus(by, pageName);
         }
     }
+
 }
