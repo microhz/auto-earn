@@ -112,26 +112,32 @@ public class Youtube extends ChromeSupport {
         video.download(audioFormat, new File(YOUTUBE_PATH_ORIGIN), fileName);
     }
 
-    public void mergeAudioAndVideo(String fileName, String audioName) throws Exception {
+    public void mergeAudioAndVideo(String webmVideoName, String audioName) throws Exception {
         // ./ffmpeg -i test2.mp4 -i test2-audio.mp4  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 output.mp4
-        LogUtils.print("开始合成视频 {} {} ", fileName, audioName);
+        LogUtils.print("开始合成视频 {} {} ", webmVideoName, audioName);
         // 处理webm
-        processWebm(fileName);
-        Process exec = Runtime.getRuntime().exec(mergeVideoAudio(fileName, audioName));
+        processWebm2Mp4(webmVideoName);
+
+        Process exec = Runtime.getRuntime().exec(mergeVideoAudio(webmVideoName, audioName));
         exec.waitFor();
-        LogUtils.print("合成视频 {} 与 {} 音频完毕", fileName, audioName);
+        LogUtils.print("合成视频 {} 与 {} 音频完毕", webmVideoName, audioName);
     }
 
-    private String mergeVideoAudio(String fileName, String audioName) throws Exception {
-        String videoAbsolutePath = YOUTUBE_PATH_ORIGIN + fileName + ".mp4";
+    private String mergeVideoAudio(String videoName, String audioName) throws Exception {
+        String videoAbsolutePath = YOUTUBE_PATH_ORIGIN + videoName + ".mp4";
         String audioAboslutePath = YOUTUBE_PATH_ORIGIN + audioName + ".mp4";
 
         checkFileExits(videoAbsolutePath);
         checkFileExits(audioAboslutePath);
 
-        String result = FFMPEG_PATH +  " -i " +  videoAbsolutePath  + " -i " + audioAboslutePath + "  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 " + YOUTUBE_PATH_ORIGIN+ "合成" + fileName + ".mp4";
+        String resultFileName = getResultName(videoName);
+        String result = FFMPEG_PATH +  " -i " +  videoAbsolutePath  + " -i " + audioAboslutePath + "  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 " + YOUTUBE_PATH_ORIGIN + resultFileName + ".mp4";
         LogUtils.print("最终执行命令 {} ", result);
         return result;
+    }
+
+    private String getResultName(String videoName) {
+        return videoName.replace("-video", "");
     }
 
     private void checkFileExits(String path) throws Exception {
@@ -142,8 +148,8 @@ public class Youtube extends ChromeSupport {
         }
     }
 
-    private void processWebm(String fileName) throws Exception {
-        String absolutePath = YOUTUBE_PATH_ORIGIN + fileName;
+    private void processWebm2Mp4(String webmVideoName) throws Exception {
+        String absolutePath = YOUTUBE_PATH_ORIGIN + webmVideoName;
         File file = new File(absolutePath + ".mp4");
         if (file.exists()) {
             return ;
@@ -155,7 +161,7 @@ public class Youtube extends ChromeSupport {
         }
         LogUtils.print("下载视频为webm格式，需要进行转换成mp4，请耐心等待");
         // 需要转换
-        Process exec = Runtime.getRuntime().exec(parseWebm2Mp4(absolutePath, fileName));
+        Process exec = Runtime.getRuntime().exec(parseWebm2Mp4(absolutePath, webmVideoName));
         // 这里打印的是Error级别, 需要从终端缓冲区读取出来，否则会溢出导致主进程卡死
         TerminalUtils.asyncPrint(exec.getErrorStream());
         // 阻塞等待
