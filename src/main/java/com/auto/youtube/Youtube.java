@@ -1,6 +1,7 @@
 package com.auto.youtube;
 
 import com.auto.common.ChromeSupport;
+import com.auto.common.ConsoleLogger;
 import com.auto.common.LogUtils;
 import com.auto.common.TerminalUtils;
 import com.github.kiulian.downloader.OnYoutubeDownloadListener;
@@ -75,6 +76,7 @@ public class Youtube extends ChromeSupport {
         // 分别下载并合并
         VideoFormat videoFormat = getFormat(video, piexl);
         LogUtils.print("开始下载清晰度为 %s 的视频 %s", piexl, fileName);
+        video.setLogger(new ConsoleLogger());
         video.download(videoFormat, new File(YOUTUBE_PATH_ORIGIN), fileName);
     }
 
@@ -121,12 +123,23 @@ public class Youtube extends ChromeSupport {
     }
 
     private String mergeVideoAudio(String fileName, String audioName) throws Exception {
-        String videoAbsolutePath = YOUTUBE_PATH_ORIGIN + fileName;
-        String audioAboslutePath = YOUTUBE_PATH_ORIGIN + audioName;
+        String videoAbsolutePath = YOUTUBE_PATH_ORIGIN + fileName + ".mp4";
+        String audioAboslutePath = YOUTUBE_PATH_ORIGIN + audioName + ".mp4";
 
-        String result = FFMPEG_PATH +  " -i " +  videoAbsolutePath + ".mp4" + " -i " + audioAboslutePath + ".mp4  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 " + YOUTUBE_PATH_ORIGIN+ "合成" + fileName + ".mp4";
+        checkFileExits(videoAbsolutePath);
+        checkFileExits(audioAboslutePath);
+
+        String result = FFMPEG_PATH +  " -i " +  videoAbsolutePath  + " -i " + audioAboslutePath + "  -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 " + YOUTUBE_PATH_ORIGIN+ "合成" + fileName + ".mp4";
         LogUtils.print("最终执行命令 {} ", result);
         return result;
+    }
+
+    private void checkFileExits(String path) throws Exception {
+        File file = new File(path);
+        if (! file.exists()) {
+            LogUtils.print("{} 文件不存在", path);
+            throw new Exception("文件不存在");
+        }
     }
 
     private void processWebm(String fileName) throws Exception {
@@ -162,6 +175,29 @@ public class Youtube extends ChromeSupport {
         String result = FFMPEG_PATH + " -i " + absolutePath + ".webm -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" " + YOUTUBE_PATH_ORIGIN + fileName + ".mp4";
         LogUtils.print("执行格式转换命令: {}", result);
         return new String[]{"sh","-c", result};
+    }
+
+    /**
+     * 冗余文件删除
+     * @param fileName
+     */
+    public void clearRandomFile(String fileName, String audioFile) {
+        File file = new File(YOUTUBE_PATH_ORIGIN + fileName + ".webm");
+        if (file.exists()) {
+            LogUtils.print("删除webm文件 {}", fileName);
+            file.delete();
+        }
+        file = new File(YOUTUBE_PATH_ORIGIN + audioFile + ".mp4");
+        if (file.exists()) {
+            LogUtils.print("删除audio文件 {}", audioFile);
+            file.delete();
+        }
+
+        file = new File(YOUTUBE_PATH_ORIGIN + fileName + ".mp4");
+        if (file.exists()) {
+            LogUtils.print("删除mp4文件 {}", fileName);
+            file.delete();
+        }
     }
 
     interface FormatQuantityGet {

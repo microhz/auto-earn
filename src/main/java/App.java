@@ -1,7 +1,6 @@
 import com.auto.bytedance.ByteDance;
 import com.auto.common.ChromeSupport;
 import com.auto.common.LogUtils;
-import com.auto.common.PingSupport;
 import com.auto.instagram.InstagramClient;
 import com.auto.twitter.Twitter;
 import com.auto.youtube.Youtube;
@@ -45,7 +44,7 @@ public class App {
 //            autoDownloadAndUpload();
 //
 //            // 下载youtube视频
-            downloadYoutube("qzzyLM93UDk", "东京", 2160);
+            downloadYoutube("mOcjVv3p7z0", "新加坡", 2160);
 //            PingSupport.ping("www.baidu.com");
 //
 //            // 上传头条视频 TODO 下载进度条
@@ -89,13 +88,14 @@ public class App {
     private static void downloadYoutube(String videoId, String fileName, int quantity) throws Exception {
         Youtube youtube = new Youtube();
         youtube.downloadVideo(videoId, fileName, quantity);
-        if (quantity > 720) {
-            // 下载音频，合并
-            String audioName = fileName + "-audio";
-            youtube.downloadAudio(videoId, fileName + "-audio");
-            youtube.mergeAudioAndVideo(fileName, audioName);
+        if (quantity <= 720) {
             return ;
         }
+        // 下载音频，合并
+        String audioName = fileName + "-audio";
+        youtube.downloadAudio(videoId, audioName);
+        youtube.mergeAudioAndVideo(fileName, audioName);
+        youtube.clearRandomFile(fileName, audioName);
 
     }
 

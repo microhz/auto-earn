@@ -41,7 +41,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.ikiulian</groupId>
+            <groupId>com.github.micro</groupId>
             <artifactId>java-youtube-downloader</artifactId>
             <version>3.0.0-SNAPSHOT</version>
         </dependency>

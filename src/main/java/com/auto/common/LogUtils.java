@@ -1,6 +1,7 @@
 package com.auto.common;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.kiulian.downloader.log.Logger;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
