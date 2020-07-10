@@ -23,4 +23,16 @@ public class TerminalUtils {
             }
         }).start();
     }
+
+    public static void syncPrint(InputStream inputStream) {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String len;
+            while ((len = bufferedReader.readLine()) != null) {
+                LogUtils.print(Thread.currentThread().getName() + ":" + len);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

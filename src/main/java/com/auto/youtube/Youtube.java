@@ -14,8 +14,8 @@ import com.github.kiulian.downloader.model.formats.VideoFormat;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang.StringUtils;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -144,6 +144,8 @@ public class Youtube extends ChromeSupport {
         // 需要转换
         Process exec = Runtime.getRuntime().exec(parseWebm2Mp4(absolutePath, fileName));
         TerminalUtils.asyncPrint(exec.getInputStream());
+        TerminalUtils.asyncPrint(exec.getErrorStream());
+
         exec.waitFor();
         LogUtils.print("转换结束");
     }

@@ -1,6 +1,7 @@
 import com.auto.bytedance.ByteDance;
 import com.auto.common.ChromeSupport;
 import com.auto.common.LogUtils;
+import com.auto.common.PingSupport;
 import com.auto.instagram.InstagramClient;
 import com.auto.twitter.Twitter;
 import com.auto.youtube.Youtube;
@@ -44,7 +45,8 @@ public class App {
 //            autoDownloadAndUpload();
 //
 //            // 下载youtube视频
-            downloadYoutube("pc27fivPszM", "杭州", 2160);
+            downloadYoutube("qzzyLM93UDk", "东京", 2160);
+//            PingSupport.ping("www.baidu.com");
 //
 //            // 上传头条视频 TODO 下载进度条
 //            updateToutiaoVideo("印度6x6", "奔跑在印度街头的奔驰6x6，周围的车都是弟弟", true);
