@@ -14,8 +14,8 @@ import com.github.kiulian.downloader.model.formats.VideoFormat;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang.StringUtils;
 
-import java.io.*;
-import java.nio.charset.Charset;
+import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -143,9 +143,9 @@ public class Youtube extends ChromeSupport {
         LogUtils.print("下载视频为webm格式，需要进行转换成mp4，请耐心等待");
         // 需要转换
         Process exec = Runtime.getRuntime().exec(parseWebm2Mp4(absolutePath, fileName));
-        TerminalUtils.asyncPrint(exec.getInputStream());
+        // 这里打印的是Error级别, 需要从终端缓冲区读取出来，否则会溢出导致主进程卡死
         TerminalUtils.asyncPrint(exec.getErrorStream());
-
+        // 阻塞等待
         exec.waitFor();
         LogUtils.print("转换结束");
     }
