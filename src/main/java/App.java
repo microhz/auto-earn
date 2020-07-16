@@ -1,3 +1,5 @@
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.auto.bytedance.ByteDance;
 import com.auto.common.ChromeSupport;
 import com.auto.common.LogUtils;
@@ -18,16 +20,16 @@ import java.util.List;
 public class App {
 
 
-    // TODO 等待页面的加载太容易出错了，需要改进
     // TODO ins 视频下载，自动翻页还没做
     // TODO 真正自动化， 无需干预，部署到服务器上
     // TODO 自动打开运营后台查看
     // TODO  大视频文件 SSL peer shut down incorrectly 问题
     // TODO 单个视频页面多视频问题
     // TODO 视频素材卖钱
-    // TODO 分段问题，转换mp4阻塞问题
-
+    // TODO 木马病毒
     // TODO 刷单赚钱?
+    // TODO 搭建wifi进行嗅探
+    // TODO 养粉丝卖钱
     // 视频批量
     public static void main(String[] args) {
         try {
@@ -42,11 +44,13 @@ public class App {
 //            // 上传头条, 图片不需要前缀
 //            updateToutaioImage(Lists.newArrayList("tail"), "#兰博基尼 野牛出圈");
 
-
 //            autoDownloadAndUpload();
-//
+
+
+            testDT();
+
 //            // 下载youtube视频
-            downloadYoutube("5BxqahE0fu8", "哥斯拉", 2160);
+//            downloadYoutube("PkkV1vLHUvQ", "冲绳", 2160);
 //            PingSupport.ping("www.baidu.com");
 //
 //            // 上传头条视频 TODO 下载进度条
@@ -62,10 +66,17 @@ public class App {
 //            updateToutaioImage("2", "#BMW 这尾巴气势逼人啊");
 
 //             batchUpdate(5, "");
+
         } catch (Throwable e) {
             LogUtils.errorPrint(e, "系统异常");
         }
 
+    }
+
+    private static void testDT() {
+
+        Integer[] arara= new Integer[10];
+        System.out.println(arara.length);
     }
 
     /**
