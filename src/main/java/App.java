@@ -44,10 +44,10 @@ public class App {
 //            // 上传头条, 图片不需要前缀
 //            updateToutaioImage(Lists.newArrayList("tail"), "#兰博基尼 野牛出圈");
 
-//            autoDownloadAndUpload();
+            autoDownloadAndUpload();
 
 
-            testDT();
+//            testDT();
 
 //            // 下载youtube视频
 //            downloadYoutube("PkkV1vLHUvQ", "冲绳", 2160);
