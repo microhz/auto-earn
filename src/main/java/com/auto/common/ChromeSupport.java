@@ -53,7 +53,7 @@ public abstract class ChromeSupport {
 
     public static final String INS_PATH = "/Users/mapeichuan/Downloads/auto-earn-dowload/image/";
 
-    public static final String YOUTUBE_PATH_ORIGIN = "/Users/mapeichuan/Downloads/auto-earn-dowload/video/origin/";
+    public static String YOUTUBE_PATH_ORIGIN = "/Users/mapeichuan/Downloads/auto-earn-dowload/video/origin/";
 
     public static final long SHORT_WAITING_LOADING = 1000;
 

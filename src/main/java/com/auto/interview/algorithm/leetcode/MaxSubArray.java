@@ -46,6 +46,20 @@ public class MaxSubArray {
         System.out.println("cost : " + (end - start) + "ms");
     }
 
+
+    public int[] maxSumOfThreeSubarrays2(int[] nums, int k) {
+        if (nums.length < k) {
+            // error
+            return null;
+        }
+        if (nums.length == k) {
+            return new int[]{0, 0, 0};
+        }
+
+        // find the max value
+        return searchTheMaxArray(nums, k);
+    }
+
     /**
      * search the max value sub array
      * 0. consider the special case
@@ -96,7 +110,12 @@ public class MaxSubArray {
         return getValueByIndex(nums, first, k) + getValueByIndex(nums, second, k) + getValueByIndex(nums, third, k);
     }
 
+    private Map<Integer, Integer> cacheMap = new HashMap<>();
     private int getValueByIndex(int[] nums, int index, int k) {
+        Integer integer = cacheMap.get(index);
+        if (integer != null) {
+            return integer;
+        }
         // first version
         int sum = 0;
         for (int i = 0; i < k; i++) {

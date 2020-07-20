@@ -9,6 +9,7 @@ import com.auto.youtube.Youtube;
 import com.github.kiulian.downloader.YoutubeException;
 import com.google.common.collect.Lists;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -44,13 +45,15 @@ public class App {
 //            // 上传头条, 图片不需要前缀
 //            updateToutaioImage(Lists.newArrayList("tail"), "#兰博基尼 野牛出圈");
 
-            autoDownloadAndUpload();
-
+//            autoDownloadAndUpload();
 
 //            testDT();
 
 //            // 下载youtube视频
-//            downloadYoutube("PkkV1vLHUvQ", "冲绳", 2160);
+            downloadYoutube("pc27fivPszM", "杭州4分钟", 2160, "杭州");
+
+
+
 //            PingSupport.ping("www.baidu.com");
 //
 //            // 上传头条视频 TODO 下载进度条
@@ -73,10 +76,31 @@ public class App {
 
     }
 
-    private static void testDT() {
+    private static void downloadYoutube(String url, String fileName, int pixel, String dir) throws Exception {
+        String originDir = ChromeSupport.YOUTUBE_PATH_ORIGIN;
+        ChromeSupport.YOUTUBE_PATH_ORIGIN = ChromeSupport.YOUTUBE_PATH_ORIGIN + dir + "/";
+        createDir(ChromeSupport.YOUTUBE_PATH_ORIGIN);
+        downloadYoutube(url, fileName, pixel);
+        ChromeSupport.YOUTUBE_PATH_ORIGIN = originDir;
+    }
 
-        Integer[] arara= new Integer[10];
-        System.out.println(arara.length);
+    private static void createDir(String dir) {
+        File file = new File(dir);
+        if (file.exists()) {
+            return ;
+        }
+        file.mkdir();
+    }
+
+    private static void testDT() {
+        /*for (int i = 0; i < 100; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            byte[] content = new byte[1024 * 10000000];
+        }*/
     }
 
     /**
