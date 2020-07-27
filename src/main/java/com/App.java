@@ -22,6 +22,6 @@ public class App {
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("value", "the is my page");
-        return "hello";
+        return "/pages/home";
     }
 }
