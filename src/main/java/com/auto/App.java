@@ -1,3 +1,5 @@
+package com.auto;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.auto.bytedance.ByteDance;
@@ -20,17 +22,9 @@ import java.util.List;
  */
 public class App {
 
-
-    // TODO ins 视频下载，自动翻页还没做
     // TODO 真正自动化， 无需干预，部署到服务器上
-    // TODO 自动打开运营后台查看
-    // TODO  大视频文件 SSL peer shut down incorrectly 问题
     // TODO 单个视频页面多视频问题
     // TODO 视频素材卖钱
-    // TODO 木马病毒
-    // TODO 刷单赚钱?
-    // TODO 搭建wifi进行嗅探
-    // TODO 养粉丝卖钱
     // 视频批量
     public static void main(String[] args) {
         try {
@@ -45,14 +39,12 @@ public class App {
 //            // 上传头条, 图片不需要前缀
 //            updateToutaioImage(Lists.newArrayList("tail"), "#兰博基尼 野牛出圈");
 
-//            autoDownloadAndUpload();
+            autoDownloadAndUpload();
 
 //            testDT();
 
 //            // 下载youtube视频
-            downloadYoutube("pc27fivPszM", "杭州4分钟", 2160, "杭州");
-
-
+//            downloadYoutube("6tUWYXe9qbY", "这车是活的", 720, "汽车油管");
 
 //            PingSupport.ping("www.baidu.com");
 //
@@ -92,15 +84,54 @@ public class App {
         file.mkdir();
     }
 
-    private static void testDT() {
-        /*for (int i = 0; i < 100; i++) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    private static void testDT() throws InterruptedException {
+
+        String s = "[{\"eventType\":6,\"itemId\":1757696,\"orderId\":18042742},{\"eventType\":8,\"itemId\":1757696,\"orderId\":18042742},{\"eventType\":7,\"itemId\":1757696,\"orderId\":18042742},{\"eventType\":6,\"itemId\":1757696,\"orderId\":46912194},{\"eventType\":8,\"itemId\":1757696,\"orderId\":46912194},{\"eventType\":7,\"itemId\":1757696,\"orderId\":46912194},{\"eventType\":6,\"itemId\":1757696,\"orderId\":25032852},{\"eventType\":8,\"itemId\":1757696,\"orderId\":25032852},{\"eventType\":7,\"itemId\":1757696,\"orderId\":25032852},{\"eventType\":6,\"itemId\":1757696,\"orderId\":4018183},{\"eventType\":8,\"itemId\":1757696,\"orderId\":4018183},{\"eventType\":7,\"itemId\":1757696,\"orderId\":4018183},{\"eventType\":6,\"itemId\":1757696,\"orderId\":19397639},{\"eventType\":8,\"itemId\":1757696,\"orderId\":19397639},{\"eventType\":7,\"itemId\":1757696,\"orderId\":19397639},{\"eventType\":6,\"itemId\":1757696,\"orderId\":64602144},{\"eventType\":8,\"itemId\":1757696,\"orderId\":64602144},{\"eventType\":7,\"itemId\":1757696,\"orderId\":64602144},{\"eventType\":6,\"itemId\":1757696,\"orderId\":82384956},{\"eventType\":8,\"itemId\":1757696,\"orderId\":82384956},{\"eventType\":7,\"itemId\":1757696,\"orderId\":82384956},{\"eventType\":6,\"itemId\":1757696,\"orderId\":72926862},{\"eventType\":8,\"itemId\":1757696,\"orderId\":72926862},{\"eventType\":7,\"itemId\":1757696,\"orderId\":72926862},{\"eventType\":6,\"itemId\":1757696,\"orderId\":97295648},{\"eventType\":8,\"itemId\":1757696,\"orderId\":97295648},{\"eventType\":7,\"itemId\":1757696,\"orderId\":97295648},{\"eventType\":6,\"itemId\":1757696,\"orderId\":32254616},{\"eventType\":8,\"itemId\":1757696,\"orderId\":32254616},{\"eventType\":7,\"itemId\":1757696,\"orderId\":32254616},{\"eventType\":6,\"itemId\":1757696,\"orderId\":98552598},{\"eventType\":8,\"itemId\":1757696,\"orderId\":98552598},{\"eventType\":7,\"itemId\":1757696,\"orderId\":98552598},{\"eventType\":6,\"itemId\":1757696,\"orderId\":27899980},{\"eventType\":8,\"itemId\":1757696,\"orderId\":27899980},{\"eventType\":7,\"itemId\":1757696,\"orderId\":27899980},{\"eventType\":6,\"itemId\":1757696,\"orderId\":19781264},{\"eventType\":8,\"itemId\":1757696,\"orderId\":19781264},{\"eventType\":7,\"itemId\":1757696,\"orderId\":19781264},{\"eventType\":6,\"itemId\":1757696,\"orderId\":47794000},{\"eventType\":8,\"itemId\":1757696,\"orderId\":47794000},{\"eventType\":7,\"itemId\":1757696,\"orderId\":47794000},{\"eventType\":6,\"itemId\":1757696,\"orderId\":58145075},{\"eventType\":8,\"itemId\":1757696,\"orderId\":58145075},{\"eventType\":7,\"itemId\":1757696,\"orderId\":58145075},{\"eventType\":6,\"itemId\":1757696,\"orderId\":16358955},{\"eventType\":8,\"itemId\":1757696,\"orderId\":16358955},{\"eventType\":7,\"itemId\":1757696,\"orderId\":16358955},{\"eventType\":6,\"itemId\":1757696,\"orderId\":42255550},{\"eventType\":8,\"itemId\":1757696,\"orderId\":42255550},{\"eventType\":7,\"itemId\":1757696,\"orderId\":42255550},{\"eventType\":6,\"itemId\":1757696,\"orderId\":97421372},{\"eventType\":8,\"itemId\":1757696,\"orderId\":97421372},{\"eventType\":7,\"itemId\":1757696,\"orderId\":97421372},{\"eventType\":6,\"itemId\":1757696,\"orderId\":11866675},{\"eventType\":8,\"itemId\":1757696,\"orderId\":11866675},{\"eventType\":7,\"itemId\":1757696,\"orderId\":11866675},{\"eventType\":6,\"itemId\":1757696,\"orderId\":34134417},{\"eventType\":8,\"itemId\":1757696,\"orderId\":34134417},{\"eventType\":7,\"itemId\":1757696,\"orderId\":34134417}]";
+        List list = JSONObject.parseObject(s, List.class);
+        StringBuffer sb = new StringBuffer("SELECT * FROM stock_change_log_0234 WHERE ");
+
+        list.forEach(e -> {
+            JSONObject jsonObject = JSON.parseObject(e.toString());
+            sb.append(String.format("(order_id = %s AND event_type = %S AND item_id = 'DYfmROegwOo3R1Cs3sO0Yg==') OR ", jsonObject.getString("orderId"), jsonObject.getString("eventType")));
+        });
+
+        System.out.println(sb);
+
+        /*Thread t = Thread.currentThread();
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                System.out.println("子线程执行了...");
+                try {
+                    t.interrupt();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            byte[] content = new byte[1024 * 10000000];
-        }*/
+        };
+        thread.start();
+        try {
+            Thread.sleep(100000);
+
+        } catch (InterruptedException e) {
+            System.out.println("被提前中断了");
+            System.out.println(t.isInterrupted());
+            System.out.println(Thread.interrupted());
+            System.out.println(t.isInterrupted());
+        }
+        System.out.println("主线程结束");*/
+
+        Thread t = new Thread(() -> {
+            Thread.yield();
+            if (Thread.currentThread().isInterrupted()) {
+                System.out.println("被中断");
+                return ;
+            }
+        });
+        t.start();
+        t.interrupt();
+
     }
 
     /**

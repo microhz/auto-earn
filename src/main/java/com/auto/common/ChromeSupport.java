@@ -104,7 +104,12 @@ public abstract class ChromeSupport {
 
     protected void openPageAndWaitLoading(String url, By by, String pageName) {
         LogUtils.print("跳转页面 " + url);
-        webDriver.get(url);
+        waitLongLoading();
+        try {
+            webDriver.get(url);
+        } catch (Exception e) {
+            openPageAndWaitLoading(url, by, pageName);
+        }
         checkPageStatus(by, pageName);
     }
 

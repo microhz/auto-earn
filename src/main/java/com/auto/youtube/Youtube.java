@@ -25,6 +25,10 @@ import java.util.stream.Collectors;
  * @author : jihai
  * @date : 2020/6/24
  * @description :
+ * 下载逻辑：
+ * 解析网页：ytplayer标签能够找到视频资源格式
+ * 获取到指定的视频格式与链接
+ * 替换\u0026为&即可拿到视频链接
  *
  *
  * 视频音频合成命令

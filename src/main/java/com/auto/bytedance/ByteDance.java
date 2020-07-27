@@ -100,7 +100,7 @@ public class ByteDance extends ChromeSupport {
         String inputWordSize = split[0];
         if (Integer.valueOf(inputWordSize) > 0) {
             LogUtils.print("可能发布太快了，等一下再重试发布");
-            sleep(RandomUtils.nextInt(1000, 3000));
+            sleep(RandomUtils.nextInt(2000, 4000));
             publish();
         } else {
             LogUtils.print("发布成功");

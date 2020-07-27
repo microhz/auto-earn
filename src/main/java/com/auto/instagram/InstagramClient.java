@@ -256,9 +256,11 @@ public class InstagramClient extends ChromeSupport {
                 if (videoElList.size() == 1) {
                     FileUtils.copyURLToFile(new URL(videoElList.get(0).getAttribute("src")), new File(BATCH_UPDATE_PATH + imageVideoBO.getContent() +".mp4"));
                 } else {
-                    for (int j = 0; j < videoElList.size(); j++) {
+                    /*for (int j = 0; j < videoElList.size(); j++) {
                         FileUtils.copyURLToFile(new URL(videoElList.get(i).getAttribute("src")), new File(BATCH_UPDATE_PATH + imageVideoBO.getContent() + "-" + j +".mp4"));
-                    }
+                    }*/
+                    // 只取一个
+                    FileUtils.copyURLToFile(new URL(videoElList.get(0).getAttribute("src")), new File(BATCH_UPDATE_PATH + imageVideoBO.getContent()  +".mp4"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
