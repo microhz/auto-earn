@@ -5,32 +5,33 @@
     <meta charset="utf-8">
     <title>多媒体下载小站</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">支持平台列表</a>
-            </div>
-            <div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">抖音</a></li>
-                    <li><a href="#">Bilibili</a></li>
-                </ul>
-            </div>
-            <div>
-                <button type="button" class="btn btn-primary pull-right">注册</button>
-                <button type="button" class="btn btn-primary pull-right">登陆</button>
-            </div>
+    <div class="headerPage"></div>
 
-        </div>
-    </nav>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script>
+        $(function () {
+            /*公共部分
+             * 导航栏
+             * footer CopyRight
+             */
+            $(".headerPage").load("header.html", function (resp, status) {
+                if (status == 'error') {
+                    console.log("laod header error :" + resp)
+                }
+            });
+            // $(".footerpage").load("footer.html");
+        });
+    </script>
 
-    <div class="container">
+    <div class="container container-top">
         <form role="form">
             <div class="form-group">
                 <input type="text" class="form-control" id="name" placeholder="请输入视频链接">
@@ -40,23 +41,25 @@
         </form>
     </div>
 
-    <div class="container">
-        <h2>常见问题</h2>
+    <div class="container container-top">
+        <h2  class="container-botton">常见问题</h2>
+
         <p class="lead">
-            如何使用?
+            如何获得下载次数?
         </p>
-        <p class="text-left">临时填充</p>
+        <p class="text-left">每个用户有免费10次下载，下载次数不足可以注册登陆获得次数</p>
+        <p class="text-left container-botton" >可以联系QQ:347818559 获得下载会员码</p>
+
 
         <p class="lead">
-                如何使用?
-            </p>
-        <p class="text-left">临时填充</p>
-            
+            有剩余次数但是下载不了怎么解决?
+        </p>
+        <p class="text-left container-botton">可以联系QQ:347818559</p>
 
         <p class="lead">
-                如何使用?
-            </p>
-        <p class="text-left">临时填充</p>
+            下载资源的用途?
+        </p>
+        <p class="text-left container-botton">本站只提供资源的下载能力，并不保证版权，需要商业传播需要自行与版权方进行联系，由此导致的法律纠纷与本站无关</p>
     </div>
 
 </body>
