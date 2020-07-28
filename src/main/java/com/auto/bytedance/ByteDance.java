@@ -292,7 +292,7 @@ public class ByteDance extends ChromeSupport {
     }
 
     private void moveButton(double sliteRate) {
-        WebElement moveButtonEl = webDriver.findElement(By.xpath("//div[@class='secsdk-captcha-drag-icon sc-cSHVUG lbvrEu']"));
+        WebElement moveButtonEl = webDriver.findElement(By.xpath("//div[@class='secsdk-captcha-drag-icon sc-ckVGcZ gZcwqQ']"));
         Actions moveAction = new Actions(webDriver);
         moveAction.clickAndHold(moveButtonEl);
 
