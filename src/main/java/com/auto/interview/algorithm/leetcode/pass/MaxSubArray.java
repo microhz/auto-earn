@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode;
+package com.auto.interview.algorithm.leetcode.pass;
 
 import java.util.HashMap;
 import java.util.Map;

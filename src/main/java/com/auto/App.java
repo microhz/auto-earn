@@ -44,7 +44,14 @@ public class App {
 //            testDT();
 
 //            // 下载youtube视频
-//            downloadYoutube("6tUWYXe9qbY", "这车是活的", 720, "汽车油管");
+//            downloadYoutube("ex_TP2OeA0s", "宝马M5宣传片", 720, "汽车油管");
+            //
+//            downloadYoutube("TBFUk5EvfAc", "宝马M5惊悚广告片，这创意如何", 1080);
+//
+//            // BMRseEVaO-Q
+//            downloadYoutube("BMRseEVaO-Q", "宝马X6官方宣传片电影版", 1080);
+//            //
+//            downloadYoutube("ijcAwrWMi0g", "ModelY等不及吗，先看宣传片再决定买不买", 1080);
 
 //            PingSupport.ping("www.baidu.com");
 //
