@@ -24,9 +24,17 @@ public class OrderAssert {
 //        insertOrder.order(array);
 //        Assert.assertResult(() -> assertOrder(array, 1, 2, 3, 3, 4, 5, 5, 7, 10));
 
-        Order shellSort = new ShellSort();
-        shellSort.order(array);
+//        Order shellSort = new ShellSort();
+//        shellSort.order(array);
+//        Assert.assertResult(() -> assertOrder(array, 1, 2, 3, 3, 4, 5, 5, 7, 10));
+
+        Order quickSort = new QuickSort();
+        int[] array2 = new int[]{4, 7, 6, 5, 3, 2, 8, 1};
+        quickSort.order(array2);
+        Assert.assertResult(() -> assertOrder(array2, 1, 2, 3, 4, 5, 6, 7, 8));
+        quickSort.order(array);
         Assert.assertResult(() -> assertOrder(array, 1, 2, 3, 3, 4, 5, 5, 7, 10));
+
     }
 
     private static Boolean assertOrder(int[] array, int ... params) {
