@@ -15,6 +15,9 @@ import com.auto.interview.algorithm.leetcode.ListNodeUtils;
  * 链表:1->2->3->4->5->6->7->8->null, K = 3。
  * 那么 6->7->8，3->4->5，1->2各位一组。
  * 调整后：1->2->5->4->3->8->7->6->null。其中 1，2不调整，因为不够一组。
+ *
+ *
+ * 思路：算法思路梳理清楚，把操作模板写出来，再填充
  */
 public class LinkReverse {
 

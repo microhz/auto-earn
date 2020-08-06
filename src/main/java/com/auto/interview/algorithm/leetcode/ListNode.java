@@ -8,7 +8,7 @@ package com.auto.interview.algorithm.leetcode;
 public class ListNode {
     public int val;
     public ListNode next;
-    ListNode(int x) { val = x; }
+    public ListNode(int x) { val = x; }
 
     @Override
     public String toString() {

@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.order;
+package com.auto.interview.algorithm.leetcode.pass.sort;
 
 /**
  * @author : jihai

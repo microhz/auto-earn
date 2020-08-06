@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.order;
+package com.auto.interview.algorithm.leetcode.pass.sort;
 
 import com.auto.interview.algorithm.leetcode.Assert;
 
@@ -20,8 +20,12 @@ public class OrderAssert {
 //        choiseOrder.order(array);
 //        Assert.assertResult(() -> assertOrder(array, 1, 2, 3, 3, 4, 5, 5, 7, 10));
 
-        Order insertOrder = new InsertOrder();
-        insertOrder.order(array);
+//        Order insertOrder = new InsertOrder();
+//        insertOrder.order(array);
+//        Assert.assertResult(() -> assertOrder(array, 1, 2, 3, 3, 4, 5, 5, 7, 10));
+
+        Order shellSort = new ShellSort();
+        shellSort.order(array);
         Assert.assertResult(() -> assertOrder(array, 1, 2, 3, 3, 4, 5, 5, 7, 10));
     }
 
