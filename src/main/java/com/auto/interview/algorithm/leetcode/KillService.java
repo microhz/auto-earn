@@ -2,6 +2,7 @@ package com.auto.interview.algorithm.leetcode;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.Data;
+import org.apache.commons.lang3.RandomUtils;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -26,13 +27,14 @@ public class KillService {
 
     public static void main(String[] args) {
         // 初始化库存数量
-        stock = new Stock(1);
+        stock = new Stock(100000);
 
-        // 模拟10个并发
-        CountDownLatch countDownLatch = new CountDownLatch(10);
+        // 模拟并发
+        int concurrentCount = 40;
+        CountDownLatch countDownLatch = new CountDownLatch(concurrentCount);
         KillService killService = new KillService();
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 10, 2, TimeUnit.MINUTES, new ArrayBlockingQueue<>(10), new ThreadFactoryBuilder().setNameFormat("user-request-%d").build(), new ThreadPoolExecutor.CallerRunsPolicy());
-        for (int i = 0; i < 10; i++) {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(concurrentCount, concurrentCount, 2, TimeUnit.MINUTES, new ArrayBlockingQueue<>(10), new ThreadFactoryBuilder().setNameFormat("user-request-%d").build(), new ThreadPoolExecutor.CallerRunsPolicy());
+        for (int i = 0; i < concurrentCount; i++) {
             threadPoolExecutor.execute(() -> {
                 try {
                     /**
@@ -40,12 +42,11 @@ public class KillService {
                      */
                     countDownLatch.countDown();
                     countDownLatch.await();
-                    System.out.println(Thread.currentThread().getName() + " -> 开始并发抢购");
                     long start = System.currentTimeMillis();
                     // 发送并发请求
-                    Result result = killService.commitRequest(killSkuId, 1);
+                    Result result = killService.commitRequest(killSkuId, RandomUtils.nextInt(1, 5));
                     long end = System.currentTimeMillis();
-                    System.out.println(Thread.currentThread().getName() + " 秒杀结果 : " + result.isSuccess() + "，耗时:" + (end - start) + "ms");
+                    System.out.println(Thread.currentThread().getName() + " 秒杀结果 : " + result.isSuccess() + "，信息:" + result.getMsg() + "，耗时:" + (end - start) + "ms");
                     stock.showOperateNumer();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -64,6 +65,7 @@ public class KillService {
      * @param count
      */
     private Result commitRequest(Long skuId, int count) {
+        System.out.println(Thread.currentThread().getName() + " 下单扣减:" + count);
         Result result = new Result();
         try {
             // 累计阈值
@@ -183,7 +185,9 @@ class MergeRequestWorker  implements Runnable {
     public void createOrAddStockParam(StockParam stockParam) {
         stockParamQueue.add(stockParam);
         // 起步执行轮训队列
-        new Thread(this).start();
+        Thread thread = new Thread(this);
+        thread.setName("merge-request-" + System.currentTimeMillis() % 100 + RandomUtils.nextInt(0, 100));
+        thread.start();
     }
 
     @Override
@@ -209,6 +213,9 @@ class MergeRequestWorker  implements Runnable {
                         // 队列为空或则达到最大批量，先执行
                         break;
                     }
+                }
+                if (stockParamList.isEmpty()) {
+                    continue;
                 }
 
                 System.out.println(Thread.currentThread().getName() + " , 合并线程 : " + stockParamList);
@@ -368,10 +375,10 @@ class Stock {
      * 模拟只有库存不足才会返回false
      */
     public synchronized boolean duductStock(Long skuId, Integer count) {
+        operteNumer ++;
         System.out.println(Thread.currentThread().getName() + " : 剩余库存 ： " + this.availCount + ",扣减：" + count);
         if (this.availCount >= count && this.skuId.equals(skuId)) {
             this.availCount = availCount - count;
-            operteNumer ++;
             return true;
         }
         return false;

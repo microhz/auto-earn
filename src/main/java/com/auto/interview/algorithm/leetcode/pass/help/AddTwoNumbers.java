@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass;
+package com.auto.interview.algorithm.leetcode.pass.help;
 
 import com.auto.interview.algorithm.leetcode.AssertUtils;
 import com.auto.interview.algorithm.leetcode.ListNode;
