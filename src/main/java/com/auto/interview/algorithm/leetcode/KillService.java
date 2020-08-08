@@ -95,7 +95,7 @@ public class KillService {
             }
             // 如果没到阈值执行这里
             // 普通单线程直接访问DB
-            if (stock.duductStock(skuId, count)) {
+            if (! stock.duductStock(skuId, count)) {
                 result.setMsg("库存不足");
                 result.setSuccess(false);
                 return result;
@@ -222,7 +222,12 @@ class MergeRequestWorker  implements Runnable {
                 mergeOperateStock(stockParamList);
                 stockParamList.clear();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                if (! stockParamList.isEmpty()) {
+                    stockParamList.forEach(param -> {
+                        param.getKillPromise().setOk(false);
+                        param.getKillPromise().notifyRequest();
+                    });
+                }
             }
         }
     }
