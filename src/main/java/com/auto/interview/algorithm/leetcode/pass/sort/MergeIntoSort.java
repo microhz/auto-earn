@@ -17,7 +17,7 @@ import org.apache.commons.lang.ArrayUtils;
  * 稳定的
  *
  */
-public class MergeIntoSort implements Order {
+public class MergeIntoSort implements Sort {
 
     public static void main(String[] args) {
         MergeIntoSort mergeIntoSort = new MergeIntoSort();

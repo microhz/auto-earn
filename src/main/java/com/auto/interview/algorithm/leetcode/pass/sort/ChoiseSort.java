@@ -7,7 +7,7 @@ package com.auto.interview.algorithm.leetcode.pass.sort;
  * 时间复杂度： n方
  * 一般人最快能想到的方法
  */
-public class ChoiseOrder implements Order {
+public class ChoiseSort implements Sort {
 
 
     /**

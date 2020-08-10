@@ -5,7 +5,7 @@ package com.auto.interview.algorithm.leetcode.pass.sort;
  * @date : 2020/8/5
  * @description :
  */
-public interface Order {
+public interface Sort {
 
     /**
      * 排序定义

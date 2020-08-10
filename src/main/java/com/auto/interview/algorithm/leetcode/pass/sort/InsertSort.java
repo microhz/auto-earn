@@ -6,7 +6,7 @@ package com.auto.interview.algorithm.leetcode.pass.sort;
  * @description : 插入排序需要用一个额外的空间来
  * 时间复杂度 n平方
  */
-public class InsertOrder implements Order {
+public class InsertSort implements Sort {
 
     /**
      * 核心思想就是默认第一个元素已经排好序，从第一个元素开始往前移动，移动到一个合适的位置

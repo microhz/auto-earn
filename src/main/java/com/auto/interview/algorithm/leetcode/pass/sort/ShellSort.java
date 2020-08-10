@@ -5,7 +5,7 @@ package com.auto.interview.algorithm.leetcode.pass.sort;
  * @date : 2020/8/5
  * @description : 希尔排序，第一个突破n方复杂度 低于n平方
  */
-public class ShellSort implements Order {
+public class ShellSort implements Sort {
 
 
     /**

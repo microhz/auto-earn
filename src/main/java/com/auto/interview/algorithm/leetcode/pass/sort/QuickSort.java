@@ -6,7 +6,7 @@ package com.auto.interview.algorithm.leetcode.pass.sort;
  * @description : 快速排序
  * nlogn的复杂度，最快的方式
  */
-public class QuickSort implements Order {
+public class QuickSort implements Sort {
 
     /**
      * 分治思想

@@ -5,7 +5,7 @@ package com.auto.interview.algorithm.leetcode.pass.sort;
  * @date : 2020/8/5
  * @description :
  */
-public class BubbleOrder implements Order {
+public class BubbleSort implements Sort {
 
     /**
      * 两两相互比较
