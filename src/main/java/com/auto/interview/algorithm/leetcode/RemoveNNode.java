@@ -1,5 +1,8 @@
 package com.auto.interview.algorithm.leetcode;
 
+import com.auto.common.Learn;
+import com.auto.common.Self;
+
 /**
  * @author : jihai
  * @date : 2020/8/9
@@ -26,10 +29,8 @@ public class RemoveNNode {
     public static void main(String[] args) {
         RemoveNNode removeNNode = new RemoveNNode();
         AssertUtils.assertListNode(removeNNode.removeNthFromEnd2(ListNodeUtils.buildListNode(1, 2, 3, 4, 5), 2), 1, 2, 3, 5);
-
         Assert.assertTrue(removeNNode.removeNthFromEnd2(ListNodeUtils.buildListNode(1), 1) == null);
         AssertUtils.assertListNode(removeNNode.removeNthFromEnd2(ListNodeUtils.buildListNode(1, 2), 2), 2);
-
     }
 
 
@@ -37,13 +38,14 @@ public class RemoveNNode {
      * 方法2：
      *
      * 官方答案：amazing
-     * 
+     *
      * 可以保持两个指针间距为n
      * 然后移动即可
      *
      * 时间复杂度 n
      * 空间复杂度 1
      */
+    @Learn
     public ListNode removeNthFromEnd2(ListNode head, int n) {
         if (head.next == null) return null;
         ListNode p1 = head, p2 = head;
@@ -70,6 +72,7 @@ public class RemoveNNode {
      * 时间复杂度 n
      * 空间复杂度 1
      */
+    @Self
     public ListNode removeNthFromEnd(ListNode head, int n) {
         int size = 0;
         ListNode p = head;

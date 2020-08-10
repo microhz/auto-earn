@@ -1,5 +1,6 @@
-package com.auto.interview.algorithm.leetcode.pass.help;
+package com.auto.interview.algorithm.leetcode.pass;
 
+import com.auto.common.Learn;
 import com.auto.interview.algorithm.leetcode.AssertUtils;
 import com.auto.interview.algorithm.leetcode.ListNode;
 import com.auto.interview.algorithm.leetcode.ListNodeUtils;
@@ -23,16 +24,8 @@ import com.auto.interview.algorithm.leetcode.ListNodeUtils;
  * 原因：342 + 465 = 807
  *
  *
- *
- *  * 输入：(1 -> 4 -> 3) + (1 -> 6 -> 4)
- *  * 输出：8 -> 0 -> 2
- *  * 原因：341 + 461 = 802
- *
- *
- *   *  * 输入：(2 -> 7 -> 3) + (1 -> 6)
- *  *  * 输出：3 -> 3 -> 3
- *  *  * 原因：61 + 372 = 433
  */
+@Learn
 public class AddTwoNumbers {
 
     public static void main(String[] args) {
