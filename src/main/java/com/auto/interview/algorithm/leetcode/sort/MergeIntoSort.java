@@ -1,6 +1,6 @@
 package com.auto.interview.algorithm.leetcode.sort;
 
-import com.auto.interview.algorithm.leetcode.AssertUtils;
+import com.auto.interview.algorithm.leetcode.utils.AssertUtils;
 import org.apache.commons.lang.ArrayUtils;
 
 /**
