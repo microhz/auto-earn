@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.sort;
+package com.auto.interview.algorithm.leetcode.sort;
 
 /**
  * @author : jihai
@@ -14,7 +14,7 @@ public class ShellSort implements Sort {
      * @return
      */
     @Override
-    public int[] order(int[] array) {
+    public int[] sort(int[] array) {
         int step = array.length / 2;
         for (int i = step; i > 0; i --) {
             for (int j = 0; j + i < array.length; j++) {

@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.sort;
+package com.auto.interview.algorithm.leetcode.sort;
 
 /**
  * @author : jihai
@@ -17,7 +17,7 @@ public class ChoiseSort implements Sort {
      * @return
      */
     @Override
-    public int[] order(int[] array) {
+    public int[] sort(int[] array) {
         for (int i = 0; i < array.length; i++) {
             int minIndex = i;
             for (int j = i; j < array.length; j++) {

@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.sort;
+package com.auto.interview.algorithm.leetcode.sort;
 
 /**
  * @author : jihai
@@ -12,5 +12,5 @@ public interface Sort {
      * @param array
      * @return
      */
-    int[] order(int[] array);
+    int[] sort(int[] array);
 }

@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.sort;
+package com.auto.interview.algorithm.leetcode.sort;
 
 import com.auto.interview.algorithm.leetcode.AssertUtils;
 import org.apache.commons.lang.ArrayUtils;
@@ -21,11 +21,11 @@ public class MergeIntoSort implements Sort {
 
     public static void main(String[] args) {
         MergeIntoSort mergeIntoSort = new MergeIntoSort();
-        AssertUtils.assertArray(mergeIntoSort.order(new int[]{3, 2, 1}), 1, 2, 3);
+        AssertUtils.assertArray(mergeIntoSort.sort(new int[]{3, 2, 1}), 1, 2, 3);
 
-        AssertUtils.assertArray(mergeIntoSort.order(new int[]{6,5,4,3,2,1,0}), 0, 1, 2, 3, 4, 5, 6);
+        AssertUtils.assertArray(mergeIntoSort.sort(new int[]{6,5,4,3,2,1,0}), 0, 1, 2, 3, 4, 5, 6);
 
-        AssertUtils.assertArray(mergeIntoSort.order(new int[]{4, 2, 4, 1, 7, 11, -1}), -1, 1, 2, 4, 4, 7, 11);
+        AssertUtils.assertArray(mergeIntoSort.sort(new int[]{4, 2, 4, 1, 7, 11, -1}), -1, 1, 2, 4, 4, 7, 11);
     }
 
     /**
@@ -40,7 +40,7 @@ public class MergeIntoSort implements Sort {
      * 6,5,4,3,2,1,0
      */
     @Override
-    public int[] order(int[] array) {
+    public int[] sort(int[] array) {
         return splitMerge(array, 0, array.length);
     }
 

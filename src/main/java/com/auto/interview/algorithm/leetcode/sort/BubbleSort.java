@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.sort;
+package com.auto.interview.algorithm.leetcode.sort;
 
 /**
  * @author : jihai
@@ -14,7 +14,7 @@ public class BubbleSort implements Sort {
      * @return
      */
     @Override
-    public int[] order(int[] array) {
+    public int[] sort(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[j] > array[j + 1]) {

@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.sort;
+package com.auto.interview.algorithm.leetcode.sort;
 
 /**
  * @author : jihai
@@ -14,7 +14,7 @@ public class InsertSort implements Sort {
      * @return
      */
     @Override
-    public int[] order(int[] array) {
+    public int[] sort(int[] array) {
         for (int i = 1; i < array.length; i++) {
             int insertVal = array[i];
             for (int j = i; j >= 0 ; j--) {

@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.sort;
+package com.auto.interview.algorithm.leetcode.sort;
 
 /**
  * @author : jihai
@@ -15,7 +15,7 @@ public class QuickSort implements Sort {
      * 递归左右
      */
     @Override
-    public int[] order(int[] array) {
+    public int[] sort(int[] array) {
         order(array, 0, array.length - 1);
         return array;
     }

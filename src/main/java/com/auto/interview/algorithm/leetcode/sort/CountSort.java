@@ -1,4 +1,4 @@
-package com.auto.interview.algorithm.leetcode.pass.sort;
+package com.auto.interview.algorithm.leetcode.sort;
 
 /**
  * @author : jihai
@@ -7,7 +7,7 @@ package com.auto.interview.algorithm.leetcode.pass.sort;
  */
 public class CountSort implements Sort {
     @Override
-    public int[] order(int[] array) {
+    public int[] sort(int[] array) {
         return new int[0];
     }
 }
