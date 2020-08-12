@@ -1,6 +1,6 @@
 package com.auto.interview.algorithm.leetcode.number;
 
-import com.auto.common.Self;
+import com.auto.interview.algorithm.leetcode.base.Self;
 import com.auto.interview.algorithm.leetcode.utils.AssertUtils;
 import com.auto.interview.algorithm.leetcode.base.ListNode;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;

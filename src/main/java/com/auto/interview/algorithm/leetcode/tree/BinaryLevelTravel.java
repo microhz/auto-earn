@@ -1,7 +1,7 @@
 package com.auto.interview.algorithm.leetcode.tree;
 
-import com.auto.common.Learn;
-import com.auto.common.Self;
+import com.auto.interview.algorithm.leetcode.base.Learn;
+import com.auto.interview.algorithm.leetcode.base.Self;
 import com.auto.interview.algorithm.leetcode.base.TreeNode;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
 

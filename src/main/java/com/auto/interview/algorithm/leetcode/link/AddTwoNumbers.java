@@ -1,6 +1,6 @@
 package com.auto.interview.algorithm.leetcode.link;
 
-import com.auto.common.Learn;
+import com.auto.interview.algorithm.leetcode.base.Learn;
 import com.auto.interview.algorithm.leetcode.utils.AssertUtils;
 import com.auto.interview.algorithm.leetcode.base.ListNode;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
@@ -53,6 +53,7 @@ public class AddTwoNumbers {
      * 每个位加起来即可，但是遇到溢出需要处理，例如 8 + 9 = 17， 需要把这个1拿到下一个循环累计处理
      * 在最终处理完了，这个溢出还有就再构造一个节点
      */
+    @Learn
     public ListNode addTwoNumbers3(ListNode l1, ListNode l2) {
         // 初始化一个节点,最终返回的是next
         ListNode resultList = new ListNode(0), index = resultList;

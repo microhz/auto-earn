@@ -1,6 +1,7 @@
 package com.auto.interview.algorithm.leetcode.link;
 
 import com.auto.interview.algorithm.leetcode.base.ListNode;
+import com.auto.interview.algorithm.leetcode.base.Pass;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
 
@@ -66,21 +67,22 @@ public class IntersactionOfTwoLinkedList {
 
         ListNode headB = NodeUtils.buildListNode(5, 0, 1);
         headB.next = headA.next.next;
-        Assert.assertTrue(intersactionOfTwoLinkedList.getIntersectionNode3(headA, headB).val == 8);
+        Assert.assertTrue(intersactionOfTwoLinkedList.getIntersectionNode(headA, headB).val == 8);
 
 
         ListNode headA2 = NodeUtils.buildListNode(1, 2, 3);
 
         ListNode headB2 = NodeUtils.buildListNode(4);
-        Assert.assertTrue(intersactionOfTwoLinkedList.getIntersectionNode3(headA2, headB2) == null);
+        Assert.assertTrue(intersactionOfTwoLinkedList.getIntersectionNode(headA2, headB2) == null);
     }
 
     /**
-     * 分治法
+     * 动态规划
      * 定义两个指针
      * p1, p2分别指向第一个链表和第二个链表
      *
      */
+    @Pass
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode p1 = headA, p2 = headB;
         while (p1 != null) {
@@ -105,6 +107,7 @@ public class IntersactionOfTwoLinkedList {
      * @param headB
      * @return
      */
+    @Pass
     public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
         ListNode p1 = headA, p2 = headB;
         Set<ListNode> contains = new HashSet<>();
@@ -128,6 +131,7 @@ public class IntersactionOfTwoLinkedList {
      * 两个指针，分别遍历两个链表
      * 当A链表到尾巴在换到B链表
      */
+    @Pass
     public ListNode getIntersectionNode3(ListNode headA, ListNode headB) {
         ListNode p1 = headA, p2 = headB;
         ListNode tail = null;

@@ -1,7 +1,7 @@
 package com.auto.interview.algorithm.leetcode.array;
 
-import com.auto.common.Learn;
-import com.auto.common.Self;
+import com.auto.interview.algorithm.leetcode.base.Learn;
+import com.auto.interview.algorithm.leetcode.base.Self;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
 import java.util.HashSet;
@@ -36,13 +36,61 @@ public class FindDuplicateNumber {
     public static void main(String[] args) {
         FindDuplicateNumber findDuplicateNumber = new FindDuplicateNumber();
 
-        Assert.assertTrue(findDuplicateNumber.findDuplicate3(new int[]{1, 2, 3, 4, 4, 5}) == 4);
+        Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{2,5,9,6,9,3,8,9,7,1}) == 9);
+        Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{1,3,4,2,2}) == 2);
 
-        Assert.assertTrue(findDuplicateNumber.findDuplicate3(new int[]{3,1,3,4,2}) == 3);
-
-        Assert.assertTrue(findDuplicateNumber.findDuplicate3(new int[]{1,3,4,2,2}) == 2);
+        Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{3, 1, 3, 4, 2}) == 3);
 
 
+        Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{5, 0, 0, 0, 0, 5}) == 5);
+
+        Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{1, 2, 3, 4, 4, 5}) == 4);
+
+        Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{3,1,3,4,2}) == 3);
+
+        Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{1,3,4,2,2}) == 2);
+
+
+
+    }
+
+
+    // 1 3 4 2 2
+    // 0 1 2 3 4
+    public int findDuplicate5(int[] nums) {
+        int slow = nums[0], fast = nums[nums[0]];
+        while (nums[slow] != nums[fast]) {
+            System.out.println("--fast:" + fast + ", ---slow:" + slow);
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+
+            System.out.println("fast:" + fast + ", slow:" + slow);
+        }
+        // 相遇
+        System.out.println("相遇:" + fast);
+        fast = 0;
+        while (nums[slow] != nums[fast]) {
+            fast = nums[fast];
+            slow = nums[slow];
+        }
+        return nums[slow];
+    }
+
+    //
+    public int findDuplicate4(int[] nums) {
+        int fast = nums[nums[0]], slow = nums[0];
+        while(fast != slow) {
+            fast = nums[nums[fast]];
+            slow = nums[slow];
+        }
+
+        fast = 0;
+        while(fast != slow) {
+            fast = nums[fast];
+            slow = nums[slow];
+        }
+
+        return slow;
     }
 
     /**
@@ -106,4 +154,5 @@ public class FindDuplicateNumber {
             fast += random.nextInt(nums.length);
         }
     }
+
 }

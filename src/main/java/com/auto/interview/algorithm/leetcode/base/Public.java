@@ -1,4 +1,4 @@
-package com.auto.common;
+package com.auto.interview.algorithm.leetcode.base;
 
 /**
  * @author : jihai
