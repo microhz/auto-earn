@@ -32,7 +32,8 @@ public class SortAssert {
                 new InsertSort(),
                 new MergeIntoSort(),
                 new QuickSort(),
-                new ShellSort());
+                new ShellSort(),
+                new HeapSort());
     }
 
     /**
