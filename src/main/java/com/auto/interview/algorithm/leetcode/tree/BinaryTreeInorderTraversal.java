@@ -4,9 +4,7 @@ import com.auto.interview.algorithm.leetcode.base.TreeNode;
 import com.auto.interview.algorithm.leetcode.utils.AssertUtils;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author : jihai
@@ -40,10 +38,13 @@ public class BinaryTreeInorderTraversal {
 
         AssertUtils.assertList(binaryTreeInorderTraversal.inorderTraversal(treeNode), 4, 2, 5, 1, 6, 3, 7);
         AssertUtils.assertList(binaryTreeInorderTraversal.inorderTraversal2(treeNode), 4, 2, 5, 1, 6, 3, 7);
+        AssertUtils.assertList(binaryTreeInorderTraversal.midOrderTree(treeNode), 4, 2, 5, 1, 6, 3, 7);
+        AssertUtils.assertList(binaryTreeInorderTraversal.midOrderTree(treeNode), 4, 2, 5, 1, 6, 3, 7);
 
 
         TreeNode treeNode2 = NodeUtils.buildTreeNode(1, null, 2, null, null, 3, null);
         AssertUtils.assertList(binaryTreeInorderTraversal.inorderTraversal(treeNode2), 1, 3, 2);
+        AssertUtils.assertList(binaryTreeInorderTraversal.midOrderTree(treeNode2), 1, 3, 2);
 
 
         /**
@@ -55,8 +56,44 @@ public class BinaryTreeInorderTraversal {
         // 1, 3, 2
         TreeNode treeNode3 = NodeUtils.buildTreeNode(2, 3, null, 1, null, null, null);
         AssertUtils.assertList(binaryTreeInorderTraversal.inorderTraversal(treeNode3), 1, 3, 2);
-
     }
+
+    /**
+     * 非递归解法
+     * 最优雅写法
+     * 时间复杂度: n
+     * 空间复杂度: 1
+     */
+    public List<Integer> midOrderTree(TreeNode root) {
+        if (root == null) return new ArrayList<>();
+        TreeNode curNode = root;
+        Deque<TreeNode> stack = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
+        while (curNode != null || ! stack.isEmpty()) {
+            if (curNode != null) {
+                stack.push(curNode);
+                curNode = curNode.left;
+            } else {
+                TreeNode pop = stack.pop();
+                list.add(pop.val);
+                curNode = pop.right;
+            }
+        }
+        return list;
+    }
+
+
+
+
+
+    /**
+     * 中序遍历
+     *
+     * 根节点开始遍历
+     * 寻找左节点，如果存在就把当前节点放在栈上，
+     * 一直找到最左放进list然后拿出栈顶元素放进去，
+     * 指针指向栈顶元素的右子树，继续上面操作
+     */
 
 
     /**
@@ -79,17 +116,6 @@ public class BinaryTreeInorderTraversal {
         }
         return list;
 
-        /*while (curNode != null) {
-            while (curNode.left != null) {
-                stack.push(curNode);
-                curNode = curNode.left;
-            }
-            list.add(curNode.val);
-            TreeNode pop = stack.pop();
-            list.add(pop.val);
-            curNode = pop.right;
-        }
-        return list;*/
     }
 
     /**

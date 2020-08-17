@@ -7,6 +7,14 @@ import com.auto.interview.algorithm.leetcode.base.TreeNode;
  * @author : jihai
  * @date : 2020/8/4
  * @description :
+ *
+ *
+ *
+ *     3
+ *    / \
+ *   9  20
+ *     /  \
+ *    15   7
  */
 public class NodeUtils {
 
@@ -46,23 +54,5 @@ public class NodeUtils {
             treeNode.right.right = new TreeNode(params[6]);
         }
         return treeNode;
-        /*if (params[7] != null) {
-            treeNode.left.left.left = new TreeNode(params[7]);
-        }
-        if (params[8] != null) {
-            treeNode.left.left.right = new TreeNode(params[8]);
-        }
-        if (params[9] != null) {
-            treeNode.left.right.left = new TreeNode(params[9]);
-        }
-        if (params[7] != null) {
-            treeNode.left.right.right = new TreeNode(params[10]);
-        }
-        if (params[7] != null) {
-            treeNode.left.left.left = new TreeNode(params[7]);
-        }
-        if (params[7] != null) {
-            treeNode.left.left.left = new TreeNode(params[7]);
-        }*/
     }
 }

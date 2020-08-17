@@ -52,4 +52,15 @@ public class AssertUtils {
             }
         }
     }
+
+    public static void assertDoubleList(List<Double> list, double ... params) {
+        if (list.size() != params.length) {
+            throw new RuntimeException("assert error");
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (params[i] != list.get(i)) {
+                throw new RuntimeException("assert error");
+            }
+        }
+    }
 }

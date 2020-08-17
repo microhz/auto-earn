@@ -1,6 +1,7 @@
 package com.auto.interview.algorithm.leetcode.tree;
 
 import com.auto.interview.algorithm.leetcode.base.TreeNode;
+import com.auto.interview.algorithm.leetcode.utils.Assert;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
 
 import java.util.ArrayList;
@@ -40,8 +41,19 @@ public class BinaryTreeMaxValue {
 
     public static void main(String[] args) {
         BinaryTreeMaxValue binaryTreeMaxValue = new BinaryTreeMaxValue();
-        System.out.println(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(-2, -3, -1, null, null, null, null)));
-        System.out.println(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(-10, 9, 20, null, null, 15, 7)));
+        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(-2, -3, -1, null, null, null, null)) == -1);
+        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(-10, 9, 20, null, null, 15, 7)) == 42);
+        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(1, null, null, null, null, null, null)) == 1);
+        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(2, -1, null, null, null, null, null)) == 2);
+        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(2, -1, null, null, null, null, null)) == 2);
+
+        //[1,-2,-3,1,3,-2,null,-1]
+        /**
+         *    1
+         *   -2 -3
+         *  1 3 -2 null
+         */
+        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(1,-2,-3,1,3,-2,null)) == 4);
 
     }
 
@@ -75,8 +87,22 @@ public class BinaryTreeMaxValue {
             searchTree(p.right, list);
         }
     }
-    // -3, -2, -1
+
+    /**
+     * 双指针法
+     * 滑动到下一个比当前数字大的值
+     * 累计比较
+     */
+    // -2, -3, -1, 1, -2, 3, -1
     private int getMaxSub(List<Integer> list) {
-        return 0;
+        int max = list.get(0);
+        for (int i = 0; i < list.size(); i++) {
+            int temp = 0;
+            for (int j = i; j < list.size(); j++) {
+                temp += list.get(j);
+                max = temp > max ? temp : max;
+            }
+        }
+        return max;
     }
 }
