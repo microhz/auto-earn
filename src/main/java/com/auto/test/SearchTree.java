@@ -37,29 +37,24 @@ public class SearchTree {
      * 非递归，那只能用迭代的方式
      * 利用栈，后进先出遍历
      *
-     *
      *     1
      *   2  3
      *  4 5 6 7
 
      */
     public List<Integer> searchTree(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
         TreeNode p = root;
+        Stack<TreeNode> stack = new Stack<>();
         List<Integer> list = new ArrayList<>();
-        stack.push(p);
         while (p != null || !stack.isEmpty()) {
-            if (p.left != null && p != root) {
+            if (p != null) {
                 stack.push(p);
                 p = p.left;
-            } else {
-                if (!stack.isEmpty()) {
-                    if (p != root) list.add(p.val);
-                    TreeNode pop = stack.pop();
-                    list.add(pop.val);
-                    p = pop.right;
-                }
+                continue;
             }
+            TreeNode pop = stack.pop();
+            list.add(pop.val);
+            p = pop.right;
         }
         return list;
     }
