@@ -41,19 +41,30 @@ public class BinaryTreeMaxValue {
 
     public static void main(String[] args) {
         BinaryTreeMaxValue binaryTreeMaxValue = new BinaryTreeMaxValue();
-        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(-2, -3, -1, null, null, null, null)) == -1);
-        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(-10, 9, 20, null, null, 15, 7)) == 42);
-        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(1, null, null, null, null, null, null)) == 1);
-        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(2, -1, null, null, null, null, null)) == 2);
-        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(2, -1, null, null, null, null, null)) == 2);
+//        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(-2, -3, -1, null, null, null, null)) == -1);
+//        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(-10, 9, 20, null, null, 15, 7)) == 42);
+//        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(1, null, null, null, null, null, null)) == 1);
+//        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(2, -1, null, null, null, null, null)) == 2);
+//        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(2, -1, null, null, null, null, null)) == 2);
 
         //[1,-2,-3,1,3,-2,null,-1]
         /**
          *    1
          *   -2 -3
          *  1 3 -2 null
+         *-1
          */
-        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(1,-2,-3,1,3,-2,null)) == 4);
+        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(1,-2,-3,1,3,-2,null)) == 3);
+
+        // [1,2,null,3,null,4,null,5]
+        /**
+         *               1
+         *             2
+         *          3  null
+         *        4
+         *      5
+         */
+        Assert.assertTrue(binaryTreeMaxValue.maxPathSum(NodeUtils.buildTreeNode(1,2,3,null,4,5,null)) == 15);
 
     }
 
@@ -79,29 +90,43 @@ public class BinaryTreeMaxValue {
 
     private void searchTree(TreeNode root, List<Integer> list) {
         TreeNode p = root;
+        boolean isLeftExits = false, isRightExits = false;
         if (p.left != null) {
+            isLeftExits = true;
             searchTree(p.left, list);
         }
+//        if (isLeftExits) list.add(Integer.MIN_VALUE);
         list.add(p.val);
         if (p.right != null) {
+            isRightExits = true;
             searchTree(p.right, list);
         }
+        if (isLeftExits) list.add(Integer.MIN_VALUE);
     }
 
     /**
-     * 双指针法
-     * 滑动到下一个比当前数字大的值
-     * 累计比较
+     *
+     * dp 算法
+     * dp[i] 为前i最大
+     * dp[i] = max(dp[i - 1] + list.get(i),dp[i - 1])
+     * 初始值为dp[0] = list.get(0), dp[1] = max(list.get(0), list.get(1), list.get(1) + list.get(0))
+     * 时间复杂度 n
+     * 空间复杂度 1
      */
     // -2, -3, -1, 1, -2, 3, -1
     private int getMaxSub(List<Integer> list) {
-        int max = list.get(0);
-        for (int i = 0; i < list.size(); i++) {
-            int temp = 0;
-            for (int j = i; j < list.size(); j++) {
-                temp += list.get(j);
-                max = temp > max ? temp : max;
+        int[] dp = new int[list.size()];
+        dp[0] = list.get(0);
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) == Integer.MIN_VALUE) {
+                dp[i] = Integer.MIN_VALUE;
+                continue;
             }
+            dp[i] = Math.max(dp[i - 1] + list.get(i), list.get(i));
+        }
+        Integer max = dp[0];
+        for (int i : dp) {
+            max = i > max ? i : max;
         }
         return max;
     }
