@@ -39,12 +39,15 @@ public class App {
 //            // 上传头条, 图片不需要前缀
 //            updateToutaioImage(Lists.newArrayList("tail"), "#兰博基尼 野牛出圈");
 
-            autoDownloadAndUpload();
+//            autoDownloadAndUpload();
 
 //            testDT();
 
 //            // 下载youtube视频
-//            downloadYoutube("ex_TP2OeA0s", "宝马M5宣传片", 720, "汽车油管");
+            downloadYoutube("XPjydySSE34", "力扣如何上手", 720, "土妹");
+            // UhmhM6CJ5bs&t=489s
+            downloadYoutube("UhmhM6CJ5bs&t=489s", "为什么刷力扣", 720, "土妹");
+
             //
 //            downloadYoutube("TBFUk5EvfAc", "宝马M5惊悚广告片，这创意如何", 1080);
 //

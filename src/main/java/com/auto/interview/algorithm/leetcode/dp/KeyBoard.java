@@ -2,9 +2,6 @@ package com.auto.interview.algorithm.leetcode.dp;
 
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author : jihai
  * @date : 2020/8/19
@@ -36,15 +33,60 @@ public class KeyBoard {
         KeyBoard keyBoard = new KeyBoard();
         Assert.assertTrue(keyBoard.minSteps(3) == 3);
         Assert.assertTrue(keyBoard.minSteps(4) == 4);
+        Assert.assertTrue(keyBoard.minSteps(6) == 5);
+        Assert.assertTrue(keyBoard.minSteps(18) == 8);
 
+
+        Assert.assertTrue(keyBoard.minSteps2(3) == 3);
+        Assert.assertTrue(keyBoard.minSteps2(4) == 4);
+        Assert.assertTrue(keyBoard.minSteps2(6) == 5);
+        Assert.assertTrue(keyBoard.minSteps2(18) == 8);
+        // 8 cpppcp  cppppcp  cppppppp
+        // 6 cppcp  cpppcp
     }
 
     /**
      * 方法1：
-     * dp[i] = min(dp[i - m] + 2, dp[i - n] + 2)
+     * n 步区分两种情况
+     * 如果n是素数，只能一个一个粘贴i个就需要i次操作
+     * 如果n是非素数，n = m * n最快就是先粘贴出来m再粘贴出来n, 粘贴出来m需要m次，复制1次+(n - 1)次 = n 次，因此m + n
+     *
+     * 至于为什么m * n 一定大于一个一个粘贴，最开始我也觉得需要证明:
+     * 现在证明这种分割方式使用的操作最少。原本需要 pq 步操作，分解后需要 p+q 步。因为 p+q <= pq，等价于 1 <= (p-1)(q-1)，当 p >= 2 且 q >= 2 时上式永远成立。
+     *
      */
     public int minSteps(int n) {
-        return 0;
+        // 递归出口1
+        if (n == 1) return 0;
+        for (int i = 2; i < n / 2; i++) {
+            if (n % i == 0) {
+                // 递归找到最小
+                return minSteps(n / i) + i;
+            }
+        }
+        // 递归一旦找到素数出口2
+        return n;
+    }
+
+
+    /**
+     * 方法2：动态规划
+     * dp[i] 表示i个字符需要的次数
+     */
+    public int minSteps2(int n) {
+        int[] dp = new int[n + 1];
+        dp[1] = 0;
+        for (int i = 2; i <= n; i++) {
+            Integer min = i;
+            for (int j = 2; j < i; j++) {
+                // 可能多个除数，选个小的
+                if (i % j == 0) {
+                    min = Math.min(dp[j] + i / j, min);
+                }
+            }
+            dp[i] = min;
+        }
+        return dp[n];
     }
 
 }

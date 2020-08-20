@@ -1,13 +1,8 @@
 package com.auto.interview.algorithm.leetcode.dp;
 
 import com.auto.interview.algorithm.leetcode.utils.Assert;
-import com.google.common.collect.Lists;
-import org.apache.commons.collections.CollectionUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author : jihai
@@ -38,6 +33,36 @@ public class CoinChange {
         Assert.assertTrue(coinChange.coinChange(new int[]{1, 2, 5}, 11) == 3);
         Assert.assertTrue(coinChange.coinChange(new int[]{2}, 3) == -1);
 
+        Assert.assertTrue(coinChange.coinChange2(new int[]{1}, 1) == 1);
+        Assert.assertTrue(coinChange.coinChange2(new int[]{1, 2, 5}, 11) == 3);
+        Assert.assertTrue(coinChange.coinChange2(new int[]{2}, 3) == -1);
+
+    }
+
+
+    public int coinChange2(int[] coins, int amount) {
+        int i = coinChange2(coins, amount, new int[amount + 1]);
+        return i == Integer.MAX_VALUE ? -1 : i;
+    }
+
+    /**
+     * 递归求解至少n个硬币
+     */
+    private int coinChange2(int[] coins, int amount, int[] amounts) {
+        if (amount < 0) return -1;
+        if (amount == 0) return 0;
+        if (amounts[amount] != 0) return amounts[amount];
+        // 默认最大值
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < coins.length; i++) {
+            int ret = coinChange2(coins, amount - coins[i], amounts);
+            if (ret >= 0 && ret < Integer.MAX_VALUE) {
+                ret ++;
+                min = ret < min ? ret : min;
+            }
+        }
+        amounts[amount] = min;
+        return min;
     }
 
 
@@ -48,41 +73,49 @@ public class CoinChange {
      * 3. 初始值: coin k 只能枚举
      */
     public int coinChange(int[] coins, int amount) {
-        ArrayList<Integer> list = new ArrayList<>();
-        int i = coinChange2(coins, amount, list, 0);
-        return i == Integer.MAX_VALUE ? -1 : i;
+        if (amount < 1) return 0;
+        return coinChange(coins, amount, new int[amount]);
     }
 
-    Map<Integer, Integer> map = new HashMap<>();
-    private int coinChange2(int[] coins, int amount, List<Integer> list, int layer) {
-        if (map.get(amount) != null) {
-            return map.get(amount);
-        }
-        if (amount < 0) {
-//            System.out.println(layer + " no ok: " + list);
-            list.add(-1);
-            return -1;
-        }
-        if (amount == 0) {
-//            System.out.println(layer + " ok : " + list);
-            return 0;
-        }
+    private int coinChange(int[] coins, int rem, int[] count) {
+        if (rem < 0) return -1;
+        if (rem == 0) return 0;
+        // 备忘录
+        if (count[rem - 1] != 0) return count[rem - 1];
         int min = Integer.MAX_VALUE;
-        for (int i = 0; i < coins.length; i++) {
-            ArrayList<Integer> list1 = new ArrayList<>(list);
-            list1.add(coins[i]);
-            int ret = coinChange2(coins, amount - coins[i], list1, layer + 1);
-            if (list1.contains(-1)) {
-                continue;
-            }
-            if (ret != Integer.MAX_VALUE) {
-                ret = ret + 1;
-            }
-            min = ret < min ? ret : min;
+        for (int coin : coins) {
+            int res = coinChange(coins, rem - coin, count);
+            if (res >= 0 && res < min)
+                min = 1 + res;
         }
-        map.put(amount, min);
-        return min;
+        count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
+        return count[rem - 1];
     }
+
+
+//    public int coinChange(int[] coins, int amount) {
+//        return coinChange(coins, amount, new int[amount]);
+////        return i == Integer.MAX_VALUE ? -1 : i;
+//    }
+//
+//    private int coinChange(int[] coins, int amount, int[] amounts) {
+//        if (amount < 0) {
+//            return -1;
+//        }
+//        if (amount == 0) {
+//            return 0;
+//        }
+//        int min = Integer.MAX_VALUE;
+//        for (int i = 0; i < coins.length; i++) {
+//            int ret = coinChange(coins, amount - coins[i], new int[amount]);
+//            if (ret != Integer.MAX_VALUE) {
+//                ret = ret + 1;
+//            }
+//            min = ret < min ? ret : min;
+//        }
+//        amounts[amount] = min;
+//        return min;
+//    }
 
 
 }
