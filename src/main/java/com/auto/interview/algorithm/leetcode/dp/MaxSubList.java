@@ -24,9 +24,14 @@ public class MaxSubList {
     public static void main(String[] args) {
         MaxSubList maxSubList = new MaxSubList();
         Assert.assertTrue(maxSubList.maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4}) == 6);
+        Assert.assertTrue(maxSubList.maxSubArray2(new int[]{-2,1,-3,4,-1,2,1,-5,4}) == 6);
+        Assert.assertTrue(maxSubList.maxSubArray2(new int[]{1, 2}) == 3);
+        Assert.assertTrue(maxSubList.maxSubArray3(new int[]{-2,1,-3,4,-1,2,1,-5,4}) == 6);
+        Assert.assertTrue(maxSubList.maxSubArray3(new int[]{1, 2}) == 3);
+
     }
     /**
-     *
+     * 方法1：
      * dp[i] 表示第i位连续最大的和
      * dp[i] = max(dp[i - 1] + nums[i], nums[i])
      * dp[0] = nums[0]
@@ -43,5 +48,48 @@ public class MaxSubList {
             max = i > max ? i : max;
         }
         return max;
+    }
+
+    /**
+     * 方法2：分治法
+     * 分别获取子数组的最大子数组
+     */
+    public int maxSubArray2(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        if (nums.length == 1) return nums[0];
+        int[] max = new int[]{nums[0]};
+        getMaxSubArray(nums, max);
+        return max[0];
+    }
+
+    private int getMaxSubArray(int[] nums, int[] max) {
+        return getMaxSubArray(nums, nums.length, max);
+    }
+
+    private int getMaxSubArray(int[] nums, int length, int[] max) {
+        int ret;
+        if (length - 1 == 0) {
+            ret = nums[0];
+        } else {
+            int pre = getMaxSubArray(nums, length - 1, max);
+            ret = pre <= 0 ? nums[length - 1] : (pre + nums[length - 1]);
+        }
+        max[0] = max[0] > ret ? max[0] : ret;
+        return ret;
+    }
+
+
+    /**
+     * 方法3：
+     * 当连续数组为负数，临时求和为0即可
+     */
+    public int maxSubArray3(int[] nums) {
+        int sum = Integer.MIN_VALUE, temp = 0;
+        for (int i = 0; i < nums.length; i++) {
+            temp += nums[i];
+            sum = Math.max(temp, sum);
+            if (temp < 0) temp = 0;
+        }
+        return sum;
     }
 }
