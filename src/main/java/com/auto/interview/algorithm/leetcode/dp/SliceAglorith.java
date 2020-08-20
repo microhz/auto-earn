@@ -67,6 +67,7 @@ public class SliceAglorith {
     /**
      * 设置一个list保存当前遍历的等差数列
      */
+    // TODO not pass
     public int numberOfArithmeticSlices(int[] A) {
         if (A.length < 3) return 0;
         int d = (A[2] - A[1] == A[1] - A[0]) ? (A[2] - A[1]) : Integer.MAX_VALUE;

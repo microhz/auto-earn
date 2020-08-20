@@ -52,6 +52,7 @@ public class MinTravel {
     /**
      * dp[i] = dp[i - 1] + min(k), min(k)为下一层的相邻最小
      * dp[0] = array[0][0]
+     * 应该错误
      */
     public int minTravel(List<List<Integer>> list) {
         int p = 0;

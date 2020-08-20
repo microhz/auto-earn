@@ -82,6 +82,7 @@ public class MaxSubList {
     /**
      * 方法3：
      * 当连续数组为负数，临时求和为0即可
+     * 相比动态规划，空间复杂度降为常数
      */
     public int maxSubArray3(int[] nums) {
         int sum = Integer.MIN_VALUE, temp = 0;
