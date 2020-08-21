@@ -4,10 +4,7 @@ import com.auto.interview.algorithm.leetcode.base.TreeNode;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author : jihai
@@ -64,17 +61,8 @@ public class BinaryTreeLevel {
             }
             list.add(levelList);
         }
-        return reverse(list);
-    }
-
-    private List<List<Integer>> reverse(List<List<Integer>> list) {
-        int left = 0, right = list.size() - 1;
-        while (left < right) {
-            List<Integer> temp = list.get(left);
-            list.set(left, list.get(right));
-            list.set(right, temp);
-            left ++;right --;
-        }
+        Collections.reverse(list);
         return list;
     }
+
 }
