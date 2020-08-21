@@ -5,7 +5,9 @@ import com.auto.interview.algorithm.leetcode.utils.Assert;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 /**
  * @author : jihai
@@ -36,8 +38,17 @@ public class MiniDepth {
         TreeNode treeNode = NodeUtils.buildTreeNode(3, 9, 20, null, null, 15, 7);
         MiniDepth miniDepth = new MiniDepth();
         Assert.assertTrue(miniDepth.minDepth(treeNode) == 2);
+        Assert.assertTrue(miniDepth.minDepth2(treeNode) == 2);
+        Assert.assertTrue(miniDepth.minDepth3(treeNode) == 2);
     }
 
+    /**
+     * 方法1：
+     * 我知道大部分人都采用dfs之类的解法，
+     * 我采用另一种解法，dfs找到所有子节点，然后再向上找父节点的个数
+     * 其实这样效率并不高，空间复杂度过高
+     * 维护一个父指针
+     */
     private Map<TreeNode, TreeNode> parentMap;
     public int minDepth(TreeNode root) {
         if (root == null) return 0;
@@ -71,4 +82,48 @@ public class MiniDepth {
         }
         return min;
     }
+
+    /**
+     * 方法2：
+     * 深度搜索
+     */
+    public int minDepth2(TreeNode root) {
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return 1;
+        Integer min = Integer.MAX_VALUE;
+        if (root.left != null) {
+            min = minDepth2(root.left) + 1;
+        }
+        if (root.right != null) {
+            min = Math.min(min, minDepth2(root.right) + 1);
+        }
+        return min;
+    }
+
+
+    /**
+     * 方法3：
+     * 广度搜索
+     */
+    public int minDepth3(TreeNode root) {
+        if (root == null) return 0;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int count = 0;
+        while (! queue.isEmpty()) {
+            int len = queue.size();
+            count ++;
+            for (int i = 0;i < len;i ++) {
+                TreeNode node = queue.poll();
+                if (node.left == null && node.right == null) {
+                    return count;
+                }
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+            }
+        }
+        return -1;
+    }
+
+
 }
