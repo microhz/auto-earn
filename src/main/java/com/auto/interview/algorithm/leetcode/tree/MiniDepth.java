@@ -1,0 +1,74 @@
+package com.auto.interview.algorithm.leetcode.tree;
+
+import com.auto.interview.algorithm.leetcode.base.TreeNode;
+import com.auto.interview.algorithm.leetcode.utils.Assert;
+import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author : jihai
+ * @date : 2020/8/21
+ * @description :
+ *
+ * 111. 二叉树的最小深度
+ * 给定一个二叉树，找出其最小深度。
+ *
+ * 最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
+ *
+ * 说明: 叶子节点是指没有子节点的节点。
+ *
+ * 示例:
+ *
+ * 给定二叉树 [3,9,20,null,null,15,7],
+ *
+ *     3
+ *    / \
+ *   9  20
+ *     /  \
+ *    15   7
+ * 返回它的最小深度  2.
+ */
+public class MiniDepth {
+
+    public static void main(String[] args) {
+        TreeNode treeNode = NodeUtils.buildTreeNode(3, 9, 20, null, null, 15, 7);
+        MiniDepth miniDepth = new MiniDepth();
+        Assert.assertTrue(miniDepth.minDepth(treeNode) == 2);
+    }
+
+    private Map<TreeNode, TreeNode> parentMap;
+    public int minDepth(TreeNode root) {
+        if (root == null) return 0;
+        parentMap = new HashMap<>();
+        // dfs
+        dfs(root, null);
+        return getMiniDepth();
+    }
+
+    private void dfs(TreeNode root, TreeNode parent) {
+        if (root != null) {
+            parentMap.put(root, parent);
+            dfs(root.left, root);
+            dfs(root.right, root);
+        }
+    }
+
+    private int getMiniDepth() {
+        // 遍历
+        int min = Integer.MAX_VALUE;
+        for (Map.Entry<TreeNode, TreeNode> entry : parentMap.entrySet()) {
+            // 判断是否叶子节点
+            if (entry.getKey().left == null && entry.getKey().right == null) {
+                int count = 1;
+                TreeNode p = entry.getKey();
+                while ((p = parentMap.get(p)) != null) {
+                    count ++;
+                }
+                min = min < count ? min : count;
+            }
+        }
+        return min;
+    }
+}

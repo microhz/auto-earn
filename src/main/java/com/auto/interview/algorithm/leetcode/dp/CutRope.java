@@ -36,6 +36,11 @@ public class CutRope {
         Assert.assertTrue(cutRope.cuttingRope(4) == 4);
         Assert.assertTrue(cutRope.cuttingRope(2) == 1);
 
+        Assert.assertTrue(cutRope.cuttingRope2(10) == 36);
+        Assert.assertTrue(cutRope.cuttingRope2(3) == 2);
+        Assert.assertTrue(cutRope.cuttingRope2(4) == 4);
+        Assert.assertTrue(cutRope.cuttingRope2(2) == 1);
+        Assert.assertTrue(cutRope.cuttingRope2(6) == 9);
 
     }
 
@@ -43,13 +48,12 @@ public class CutRope {
      * dp一般解决，是否存在，计数，最大最小等问题，根据题意可以看到最大的关键字，优先考虑dp算法
      * dp[i] 定义为长度为i的绳子最大乘积
      * n = k[0] +...k[m - 1]
-     * 递归写法
      */
-    // 备忘录降低重复计算
-    Map<Integer, Integer> map = new HashMap<>();
+    Map<Integer, Integer> map;
     public int cuttingRope(int n) {
-        if (n == 2) return 1;
+        map = new HashMap<>();
         int[] max = new int[]{Integer.MIN_VALUE};
+        if (n == 2) return 1;
         getMax(n, max);
         return max[0];
     }
@@ -59,7 +63,7 @@ public class CutRope {
             max[0] = map.get(n);
             return ;
         }
-        if (n == 1) {
+        if (n == 1 || n == 2) {
             max[0] = n;
             return ;
         }
@@ -69,5 +73,20 @@ public class CutRope {
             max[0] = Math.max(max[0], temp[0] * i);
         }
         map.put(n, max[0]);
+    }
+
+
+    public int cuttingRope2(int n) {
+        if (n < 3) return 1;
+        return cuttingRopeRecursion(n);
+    }
+
+    private int cuttingRopeRecursion(int n) {
+        if (n < 3) return n;
+        int max = Integer.MIN_VALUE;
+        for (int i = 2; i <= n; i++) {
+            max = Math.max(cuttingRopeRecursion(n - i) * i, max);
+        }
+        return max;
     }
 }
