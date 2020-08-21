@@ -66,7 +66,7 @@ public class BitArray {
 
 
     /**
-     * 官方解法：
+     * 官方解法： 线性扫描
      * 遇到1 i就跳2下，因为肯定是2比特的，
      * 遇到0就跳1下，看最后是不是一定在bits最后位置
      */
@@ -78,5 +78,17 @@ public class BitArray {
             else i += 2;
         }
         return i == bits.length - 1;
+    }
+
+    /**
+     * 贪心算法
+     * 只需要关心最后一位前面有多少个连续的1，如果是偶数个成立，奇数个不成立
+     */
+    public boolean isOneBitCharacter3(int[] bits) {
+        int i = bits.length - 1;
+        while (i >= 0 && bits[i] > 0) {
+            i --;
+        }
+        return i % 2 == 0;
     }
 }
