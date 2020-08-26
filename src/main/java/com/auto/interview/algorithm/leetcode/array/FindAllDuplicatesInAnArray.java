@@ -73,4 +73,23 @@ public class FindAllDuplicatesInAnArray {
         }
         return list;
     }
+
+
+    /**
+     * 不使用额外的空间
+     * @param nums
+     * @return
+     */
+    // 修改原数组，取模
+    public List<Integer> findDuplicates3(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        if (nums == null || nums.length == 0) return list;
+        for (int i = 0;i < nums.length;i ++) {
+            nums[(nums[i] - 1) % nums.length] += nums.length;
+        }
+        for (int i = 0;i < nums.length;i ++) {
+            if (nums[i] > nums.length * 2) list.add(i + 1);
+        }
+        return list;
+    }
 }
