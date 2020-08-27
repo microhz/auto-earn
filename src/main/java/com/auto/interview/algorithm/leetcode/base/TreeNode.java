@@ -11,6 +11,21 @@ public class TreeNode {
     public TreeNode right;
     public TreeNode(int x) { val = x; }
 
+    public TreeNode build(int x) {
+        return new TreeNode(x);
+    }
+
+    public  TreeNode left(int x) {
+        this.left = new TreeNode(x);
+        return this.left;
+    }
+
+    public TreeNode right(int x) {
+        this.right = new TreeNode(x);
+        return this.right;
+    }
+
+
     @Override
     public String toString() {
         return "TreeNode{" +
