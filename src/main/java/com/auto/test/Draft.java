@@ -8,8 +8,8 @@ package com.auto.test;
 public class Draft {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 3; i++) {
-            System.out.println(String.format("ALTER TABLE stock_change_log_%04d ADD INDEX sku_id(`sku_id`);", i));
-        }
+        String s = "a  b";
+        String[] s1 = s.split(" ");
+        System.out.println(s1);
     }
 }
