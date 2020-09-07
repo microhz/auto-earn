@@ -30,10 +30,44 @@ public class AllValidString {
     public static void main(String[] args) {
         AllValidString allValidString = new AllValidString();
         allValidString.generateParenthesis2(3);
+        allValidString.generateParenthesis3(3);
+
     }
 
     public void change(StringBuilder sb) {
         sb.append("b");
+    }
+
+
+    /**
+     * 全排列再判断
+     */
+    List<String> list;
+    int n;
+    public List<String> generateParenthesis3(int n) {
+        list = new ArrayList<>();
+        if (n <= 0) return list;
+        this.n = n;
+        generate(new StringBuilder(), 0, 0, n * 2);
+        return list;
+    }
+
+    public void generate(StringBuilder sb, int start, int close, int len) {
+        if (len == 0) {
+            list.add(sb.toString());
+            return ;
+        }
+        if (start < n) {
+            sb.append("(");
+            generate(sb, start + 1, close, len - 1);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        if (close < start) {
+            sb.append(")");
+            generate(sb, start, close + 1, len - 1);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+
     }
 
 
@@ -65,7 +99,7 @@ public class AllValidString {
     /**
      * 全排列再判断是否是有效括号
      */
-    List<String> list;
+//    List<String> list;
     public List<String> generateParenthesis(int n) {
         list = new ArrayList<>();
         if (n <= 0) return list;
