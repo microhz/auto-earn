@@ -79,6 +79,18 @@ public class GoodNumberArrays {
         return ans;
     }
 
+    public int numIdenticalPairs4(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int ans = 0;
+        for (int i = 0;i < nums.length;i ++) {
+            if (map.getOrDefault(nums[i], 0) > 0) {
+                ans += map.get(nums[i]);
+            }
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+        return ans;
+    }
+
 
     /**
      * 暴力法
