@@ -48,9 +48,34 @@ public class FindDuplicateNumber {
 
         Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{3,1,3,4,2}) == 3);
 
-        Assert.assertTrue(findDuplicateNumber.findDuplicate5(new int[]{1,3,4,2,2}) == 2);
+        Assert.assertTrue(findDuplicateNumber.findDuplicate6(new int[]{1,3,4,2,2}) == 2);
 
 
+
+    }
+
+
+
+    // 1,3,4,2,2
+    public int findDuplicate6(int[] nums) {
+        int n = nums.length;
+        int l = 1, r = n - 1, ans = -1;
+        while (l <= r) {
+            int mid = (l + r) >> 1;
+            int cnt = 0;
+            for (int i = 0; i < n; ++i) {
+                if (nums[i] <= mid) {
+                    cnt++;
+                }
+            }
+            if (cnt <= mid) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+                ans = mid;
+            }
+        }
+        return ans;
 
     }
 
