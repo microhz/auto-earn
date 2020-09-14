@@ -23,6 +23,11 @@ package com.auto.interview.algorithm.leetcode.array;
  */
 public class OneNumber {
 
+    public static void main(String[] args) {
+        System.out.println(1056389759 > Integer.MAX_VALUE);
+        System.out.println(Integer.MAX_VALUE + 1);
+    }
+
 
     /**
      * 其他方式不用说了
