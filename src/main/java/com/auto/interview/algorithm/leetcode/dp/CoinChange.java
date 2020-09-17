@@ -2,8 +2,6 @@ package com.auto.interview.algorithm.leetcode.dp;
 
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
-import java.util.ArrayList;
-
 /**
  * @author : jihai
  * @date : 2020/8/17
