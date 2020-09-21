@@ -1,5 +1,6 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
 /**
@@ -26,6 +27,7 @@ import com.auto.interview.algorithm.leetcode.utils.Assert;
  * 1 <= arr.length <= 10^5
  * -100 <= arr[i] <= 100
  */
+@Review(1)
 public class MaxSubArray {
 
     public static void main(String[] args) {

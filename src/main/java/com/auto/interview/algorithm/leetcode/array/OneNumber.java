@@ -1,5 +1,7 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
+
 /**
  * @author : jihai
  * @date : 2020/9/14
@@ -21,6 +23,7 @@ package com.auto.interview.algorithm.leetcode.array;
  * 输入: [4,1,2,1,2]
  * 输出: 4
  */
+@Review(1)
 public class OneNumber {
 
     public static void main(String[] args) {

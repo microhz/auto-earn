@@ -1,5 +1,7 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
+
 /**
  * @author : jihai
  * @date : 2020/8/21
@@ -33,6 +35,7 @@ package com.auto.interview.algorithm.leetcode.array;
  * 1 <= nums.length <= 1000
  * -10^6 <= nums[i] <= 10^6
  */
+@Review(1)
 public class DymaticArraySum {
 
     public static void main(String[] args) {

@@ -1,5 +1,6 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
 import java.util.*;
@@ -26,6 +27,7 @@ import java.util.*;
  * 输出: 7
  * 解释: 因为路径 1→3→1→1→1 的总和最小。
  */
+@Review(1)
 public class MiniArray {
 
     public static void main(String[] args) {

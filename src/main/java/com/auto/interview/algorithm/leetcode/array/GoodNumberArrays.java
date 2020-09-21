@@ -1,5 +1,6 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
 import java.util.HashMap;
@@ -40,6 +41,7 @@ import java.util.Map;
  * 1 <= nums.length <= 100
  * 1 <= nums[i] <= 100
  */
+@Review(1)
 public class GoodNumberArrays {
 
     public static void main(String[] args) {

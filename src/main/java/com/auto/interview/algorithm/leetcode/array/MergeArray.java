@@ -1,5 +1,7 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
+
 import java.util.Arrays;
 
 /**
@@ -23,6 +25,7 @@ import java.util.Arrays;
  *
  * A.length == n + m
  */
+@Review(1)
 public class MergeArray {
 
     public static void main(String[] args) {

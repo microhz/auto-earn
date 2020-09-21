@@ -1,5 +1,7 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.Map;
  * 原因: 最长的和谐数组是：[3,2,2,2,3].
  * 说明: 输入的数组长度最大不超过20,000.
  */
+@Review(1)
 public class MaxHomary {
 
 

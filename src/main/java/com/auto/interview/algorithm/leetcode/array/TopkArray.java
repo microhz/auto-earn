@@ -1,5 +1,7 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
+
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +33,7 @@ import java.util.PriorityQueue;
  * 题目数据保证答案唯一，换句话说，数组中前 k 个高频元素的集合是唯一的。
  * 你可以按任意顺序返回答案。
  */
+@Review(1)
 public class TopkArray {
 
     public static void main(String[] args) {

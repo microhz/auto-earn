@@ -1,5 +1,6 @@
 package com.auto.interview.algorithm.leetcode.dp;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
 /**
@@ -30,6 +31,7 @@ import com.auto.interview.algorithm.leetcode.utils.Assert;
  * 2.  1 阶 + 2 阶
  * 3.  2 阶 + 1 阶
  */
+@Review(1)
 public class ClumbingStairs {
 
     public static void main(String[] args) {
@@ -66,5 +68,15 @@ public class ClumbingStairs {
             r = p + q;
         }
         return r;
+    }
+
+    public int climbStairs3(int n) {
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int i = 3;i <= n;i ++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
     }
 }

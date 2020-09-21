@@ -1,5 +1,6 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 import com.google.common.collect.Lists;
 
@@ -28,6 +29,7 @@ import java.util.Set;
  * 输出:
  * [2,3]
  */
+@Review(1)
 public class FindAllDuplicatesInAnArray {
 
     public static void main(String[] args) {

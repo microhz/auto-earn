@@ -1,6 +1,7 @@
 package com.auto.interview.algorithm.leetcode.array;
 
 import com.auto.interview.algorithm.leetcode.base.Learn;
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.base.Self;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
@@ -31,6 +32,7 @@ import java.util.Set;
  * 时间复杂度小于 O(n2) 。
  * 数组中只有一个重复的数字，但它可能不止重复出现一次。
  */
+@Review(1)
 public class FindDuplicateNumber {
 
     public static void main(String[] args) {

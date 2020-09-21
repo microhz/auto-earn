@@ -25,7 +25,7 @@ public class LongMinSubArray {
 
 
     /**
-     * 双指针
+     * 双指针, 自己写的
      */
     public int minSubArrayLen(int s, int[] nums) {
         if (nums == null || nums.length == 0) return 0;
@@ -48,6 +48,30 @@ public class LongMinSubArray {
                 sum -= nums[start];
                 start ++;
             }
+        }
+        return min == Integer.MAX_VALUE ? 0 : min;
+    }
+
+
+    /**
+     * 官方的双指针写法，貌似要好很多
+     * @param s
+     * @param nums
+     * @return
+     */
+    public int minSubArrayLen2(int s, int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int start = 0, end = 0;
+        int min = Integer.MAX_VALUE;
+        int sum = 0;
+        while (end < nums.length) {
+            sum += nums[end];
+            while (sum >= s) {
+                min = Math.min(min, end - start + 1);
+                sum -= nums[start];
+                start ++;
+            }
+            end ++;
         }
         return min == Integer.MAX_VALUE ? 0 : min;
     }

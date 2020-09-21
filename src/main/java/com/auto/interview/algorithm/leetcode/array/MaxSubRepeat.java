@@ -1,5 +1,7 @@
 package com.auto.interview.algorithm.leetcode.array;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
+
 /**
  * @author : jihai
  * @date : 2020/9/19
@@ -24,6 +26,7 @@ package com.auto.interview.algorithm.leetcode.array;
  * 1 <= len(A), len(B) <= 1000
  * 0 <= A[i], B[i] < 100
  */
+@Review(1) // DP算法
 public class MaxSubRepeat {
 
     public static void main(String[] args) {
