@@ -1,6 +1,7 @@
 package com.auto.interview.algorithm.leetcode.link;
 
 import com.auto.interview.algorithm.leetcode.base.ListNode;
+import com.auto.interview.algorithm.leetcode.base.Review;
 
 /**
  * @author : jihai
@@ -45,6 +46,7 @@ import com.auto.interview.algorithm.leetcode.base.ListNode;
  * 链表的结点总数不超过 30。
  * 每个结点的值不是 0 就是 1。
  */
+@Review(1)
 public class BinaryAdd {
 
     public static void main(String[] args) {

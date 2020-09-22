@@ -2,6 +2,8 @@ package com.auto.interview.algorithm.leetcode.dp;
 
 import com.auto.interview.algorithm.leetcode.utils.Assert;
 
+import java.util.Arrays;
+
 /**
  * @author : jihai
  * @date : 2020/8/17
@@ -26,14 +28,21 @@ import com.auto.interview.algorithm.leetcode.utils.Assert;
  */
 public class CoinChange {
 
+
+
     public static void main(String[] args) {
         CoinChange coinChange = new CoinChange();
-        Assert.assertTrue(coinChange.coinChange(new int[]{1, 2, 5}, 11) == 3);
-        Assert.assertTrue(coinChange.coinChange(new int[]{2}, 3) == -1);
+//        Assert.assertTrue(coinChange.coinChange(new int[]{1, 2, 5}, 11) == 3);
+//        Assert.assertTrue(coinChange.coinChange(new int[]{2}, 3) == -1);
+//
+//        Assert.assertTrue(coinChange.coinChange2(new int[]{1}, 1) == 1);
+//        Assert.assertTrue(coinChange.coinChange2(new int[]{1, 2, 5}, 11) == 3);
+//        Assert.assertTrue(coinChange.coinChange2(new int[]{2}, 3) == -1);
 
-        Assert.assertTrue(coinChange.coinChange2(new int[]{1}, 1) == 1);
-        Assert.assertTrue(coinChange.coinChange2(new int[]{1, 2, 5}, 11) == 3);
-        Assert.assertTrue(coinChange.coinChange2(new int[]{2}, 3) == -1);
+//        Assert.assertTrue(coinChange.coinChange6(new int[]{1,2,5}, 100) == 20);
+        int[] dp = new int[4];
+        Arrays.fill(dp, 2);
+        System.out.println(dp);
 
     }
 

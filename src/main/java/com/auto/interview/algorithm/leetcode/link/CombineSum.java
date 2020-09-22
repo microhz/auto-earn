@@ -1,5 +1,7 @@
 package com.auto.interview.algorithm.leetcode.link;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,7 @@ import java.util.List;
  * candidate 中的每个元素都是独一无二的。
  * 1 <= target <= 500
  */
+@Review(1)
 public class CombineSum {
 
     /**

@@ -37,7 +37,8 @@ public class KGroupReverse {
     public static void main(String[] args) {
 
     }
-    /**hard级别，关键在于反转链表的方式用头插法
+    /**
+     * hard级别，关键在于反转链表的方式用头插法
      * 利用头插法
      */
     public ListNode reverseKGroup(ListNode head, int k) {

@@ -1,6 +1,7 @@
 package com.auto.interview.algorithm.leetcode.link;
 
 import com.auto.interview.algorithm.leetcode.base.Learn;
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.utils.AssertUtils;
 import com.auto.interview.algorithm.leetcode.base.ListNode;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
@@ -26,6 +27,7 @@ import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
  *
  */
 @Learn
+@Review(1)
 public class AddTwoNumbers {
 
     public static void main(String[] args) {

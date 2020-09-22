@@ -1,6 +1,7 @@
 package com.auto.interview.algorithm.leetcode.link;
 
 import com.auto.interview.algorithm.leetcode.base.ListNode;
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.base.TreeNode;
 
 /**
@@ -24,6 +25,7 @@ import com.auto.interview.algorithm.leetcode.base.TreeNode;
  *    /   /
  *  -10  5
  */
+@Review(1)
 public class ConvertBinarySearchTree {
 
     // 边界、递归的思路

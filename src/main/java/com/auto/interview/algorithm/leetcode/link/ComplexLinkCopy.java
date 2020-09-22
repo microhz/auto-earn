@@ -1,5 +1,7 @@
 package com.auto.interview.algorithm.leetcode.link;
 
+import com.auto.interview.algorithm.leetcode.base.Review;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +46,7 @@ import java.util.Map;
  * Node.random 为空（null）或指向链表中的节点。
  * 节点数目不超过 1000 。
  */
+@Review(1)
 public class ComplexLinkCopy {
 
     public static void main(String[] args) {

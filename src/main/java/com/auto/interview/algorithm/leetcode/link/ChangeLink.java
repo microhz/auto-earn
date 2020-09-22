@@ -1,6 +1,7 @@
 package com.auto.interview.algorithm.leetcode.link;
 
 import com.auto.interview.algorithm.leetcode.base.ListNode;
+import com.auto.interview.algorithm.leetcode.base.Review;
 import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
 
 /**
@@ -19,6 +20,7 @@ import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
  * 输入: 1->2->3->4->5->NULL, m = 2, n = 4
  * 输出: 1->4->3->2->5->NULL
  */
+@Review(1)
 public class ChangeLink {
 
     public static void main(String[] args) {
