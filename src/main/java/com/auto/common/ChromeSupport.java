@@ -87,7 +87,7 @@ public abstract class ChromeSupport {
 
     public void init() throws IOException {
         System.setProperty("webdriver.chrome.driver", "/Users/mapeichuan/github/chromedriver");
-        ChromeDriverService chromeDriverService = new ChromeDriverService.Builder().usingPort(8080).build();
+        ChromeDriverService chromeDriverService = new ChromeDriverService.Builder().usingPort(8081).build();
         chromeDriverService.start();
         webDriver = new ChromeDriver(chromeDriverService);
     }
