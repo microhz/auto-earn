@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_HOME" value="/Users/mapeichuan/gejia/auto-earn"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <property name="FILE_LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss}] [%level] [%X{traceId}] [%-22thread]  %logger{35}.%-5L - %msg %n"/>
+
+    <!-- info日志 appender  -->
+    <appender name="TEST" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/test.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/test.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>${FILE_LOG_PATTERN}</Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印INFO日志 -->
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="test-log" level="INFO" additivity="true">
+        <appender-ref ref="TEST"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+
+    <logger name="dubbo.accesslog" level="INFO" additivity="true">
+        <appender-ref ref="TEST"/>
+    </logger>
+
+
+</configuration>

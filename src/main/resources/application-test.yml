@@ -1,0 +1,37 @@
+# dubbo
+dubbo:
+  application:
+    name: stock-center
+    owner: xingkong
+  registry:
+    protocol: zookeeper
+    address: 47.99.2.51:2181,47.99.2.51:2182,47.99.2.51:2183
+    timeout: 5000
+  provider:
+    delay: -1
+    timeout: 5000
+    retries: 0
+    threads: 300
+    filter: dubboelapsed,-timeout
+    cluster: failover
+  protocol:
+    name: dubbo
+    port: 20880
+  monitor:
+    protocol: registry
+  scan:
+    basePackages: com.ggj.item.stock
+  consumer:
+    timeout: 100000
+    retries: 0
+    filter: -unchecked
+    check: false
+# 系统配置
+system:
+  props: test
+
+# 配置中心
+xconf:
+  #  zkAddress: 120.26.103.75:9181,120.26.103.75:9182,120.26.103.75:9183
+  zkAddress: 47.99.2.51:2181,47.99.2.51:2182,47.99.2.51:2183
+  groups: redis,mysql

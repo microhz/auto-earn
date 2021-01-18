@@ -10,10 +10,6 @@ import java.util.concurrent.locks.ReentrantLock;
  * @description :
  */
 public class ThreadPrint {
-
-
-
-
         Lock lock = new ReentrantLock();
         Condition conditionA = lock.newCondition();
         Condition conditionB = lock.newCondition();
