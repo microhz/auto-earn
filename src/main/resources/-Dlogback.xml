@@ -22,20 +22,9 @@
         </filter>
     </appender>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
     <logger name="test-log" level="INFO" additivity="true">
         <appender-ref ref="TEST"/>
         <appender-ref ref="STDOUT"/>
-    </logger>
-
-
-    <logger name="dubbo.accesslog" level="INFO" additivity="true">
-        <appender-ref ref="TEST"/>
     </logger>
 
 

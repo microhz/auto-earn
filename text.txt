@@ -1,0 +1,194 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.micro.earn:auto-earn:jar:1.0-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-starter-aop:jar -> version 1.4.3.RELEASE vs 1.5.1.RELEASE @ line 162, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon-maven-plugin/1.2.2/johnzon-maven-plugin-1.2.2.pom
+Progress (1): 3.6 kB                    Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon-maven-plugin/1.2.2/johnzon-maven-plugin-1.2.2.pom (3.6 kB at 4.2 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon/1.2.2/johnzon-1.2.2.pom
+Progress (1): 4.1/25 kBProgress (1): 7.8/25 kBProgress (1): 12/25 kB Progress (1): 16/25 kBProgress (1): 20/25 kBProgress (1): 24/25 kBProgress (1): 25 kB                      Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon/1.2.2/johnzon-1.2.2.pom (25 kB at 77 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon-maven-plugin/1.2.2/johnzon-maven-plugin-1.2.2.jar
+Progress (1): 2.3/26 kBProgress (1): 5.1/26 kBProgress (1): 7.9/26 kBProgress (1): 11/26 kB Progress (1): 14/26 kBProgress (1): 16/26 kBProgress (1): 19/26 kBProgress (1): 22/26 kBProgress (1): 25/26 kBProgress (1): 26 kB                      Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon-maven-plugin/1.2.2/johnzon-maven-plugin-1.2.2.jar (26 kB at 42 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-maven-plugin/1.3.61/kotlin-maven-plugin-1.3.61.pom
+Progress (1): 4.1/6.1 kBProgress (1): 6.1 kB                        Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-maven-plugin/1.3.61/kotlin-maven-plugin-1.3.61.pom (6.1 kB at 23 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-project/1.3.61/kotlin-project-1.3.61.pom
+Progress (1): 4.1/10 kBProgress (1): 7.8/10 kBProgress (1): 10 kB                       Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-project/1.3.61/kotlin-project-1.3.61.pom (10 kB at 36 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-maven-plugin/1.3.61/kotlin-maven-plugin-1.3.61.jar
+Progress (1): 2.3/80 kBProgress (1): 5.1/80 kBProgress (1): 7.9/80 kBProgress (1): 11/80 kB Progress (1): 14/80 kBProgress (1): 16/80 kBProgress (1): 19/80 kBProgress (1): 22/80 kBProgress (1): 25/80 kBProgress (1): 28/80 kBProgress (1): 30/80 kBProgress (1): 33/80 kBProgress (1): 36/80 kBProgress (1): 39/80 kBProgress (1): 42/80 kBProgress (1): 44/80 kBProgress (1): 47/80 kBProgress (1): 50/80 kBProgress (1): 53/80 kBProgress (1): 56/80 kBProgress (1): 58/80 kBProgress (1): 61/80 kBProgress (1): 64/80 kBProgress (1): 67/80 kBProgress (1): 70/80 kBProgress (1): 72/80 kBProgress (1): 75/80 kBProgress (1): 78/80 kBProgress (1): 80 kB                      Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-maven-plugin/1.3.61/kotlin-maven-plugin-1.3.61.jar (80 kB at 216 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-codegen-maven/3.12.3/jooq-codegen-maven-3.12.3.pom
+Progress (1): 3.5 kB                    Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-codegen-maven/3.12.3/jooq-codegen-maven-3.12.3.pom (3.5 kB at 13 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-parent/3.12.3/jooq-parent-3.12.3.pom
+Progress (1): 4.1/15 kBProgress (1): 7.8/15 kBProgress (1): 12/15 kB Progress (1): 15 kB                      Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-parent/3.12.3/jooq-parent-3.12.3.pom (15 kB at 42 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-codegen-maven/3.12.3/jooq-codegen-maven-3.12.3.jar
+Progress (1): 2.3/17 kBProgress (1): 5.1/17 kBProgress (1): 7.9/17 kBProgress (1): 11/17 kB Progress (1): 14/17 kBProgress (1): 16/17 kBProgress (1): 17 kB                      Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-codegen-maven/3.12.3/jooq-codegen-maven-3.12.3.jar (17 kB at 52 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/3.1.1/maven-dependency-plugin-3.1.1.pom
+Progress (1): 4.1/15 kBProgress (1): 7.8/15 kBProgress (1): 12/15 kB Progress (1): 15 kB                      Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/3.1.1/maven-dependency-plugin-3.1.1.pom (15 kB at 63 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/3.1.1/maven-dependency-plugin-3.1.1.jar
+Progress (1): 2.3/167 kBProgress (1): 5.1/167 kBProgress (1): 7.9/167 kBProgress (1): 11/167 kB Progress (1): 14/167 kBProgress (1): 16/167 kBProgress (1): 19/167 kBProgress (1): 22/167 kBProgress (1): 25/167 kBProgress (1): 28/167 kBProgress (1): 30/167 kBProgress (1): 33/167 kBProgress (1): 36/167 kBProgress (1): 39/167 kBProgress (1): 42/167 kBProgress (1): 44/167 kBProgress (1): 47/167 kBProgress (1): 50/167 kBProgress (1): 53/167 kBProgress (1): 56/167 kBProgress (1): 58/167 kBProgress (1): 61/167 kBProgress (1): 64/167 kBProgress (1): 67/167 kBProgress (1): 70/167 kBProgress (1): 72/167 kBProgress (1): 75/167 kBProgress (1): 78/167 kBProgress (1): 81/167 kBProgress (1): 84/167 kBProgress (1): 86/167 kBProgress (1): 89/167 kBProgress (1): 92/167 kBProgress (1): 95/167 kBProgress (1): 98/167 kBProgress (1): 100/167 kBProgress (1): 103/167 kBProgress (1): 106/167 kBProgress (1): 109/167 kBProgress (1): 112/167 kBProgress (1): 114/167 kBProgress (1): 117/167 kBProgress (1): 120/167 kBProgress (1): 123/167 kBProgress (1): 126/167 kBProgress (1): 128/167 kBProgress (1): 131/167 kBProgress (1): 134/167 kBProgress (1): 137/167 kBProgress (1): 140/167 kBProgress (1): 142/167 kBProgress (1): 145/167 kBProgress (1): 148/167 kBProgress (1): 151/167 kBProgress (1): 154/167 kBProgress (1): 156/167 kBProgress (1): 159/167 kBProgress (1): 162/167 kBProgress (1): 165/167 kBProgress (1): 167 kB                        Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/3.1.1/maven-dependency-plugin-3.1.1.jar (167 kB at 473 kB/s)
+[INFO] 
+[INFO] ----------------------< org.micro.earn:auto-earn >----------------------
+[INFO] Building auto-earn 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from localRepo: http://nexus.ops.yangege.cn/repository/maven-public/com/github/micro/java-youtube-downloader/3.0.0-SNAPSHOT/maven-metadata.xml
+[WARNING] Could not transfer metadata com.github.micro:java-youtube-downloader:3.0.0-SNAPSHOT/maven-metadata.xml from/to localRepo (http://nexus.ops.yangege.cn/repository/maven-public): Connect to nexus.ops.yangege.cn:80 [nexus.ops.yangege.cn/116.62.183.19] failed: Operation timed out (Connection timed out)
+[WARNING] Failure to transfer com.github.micro:java-youtube-downloader:3.0.0-SNAPSHOT/maven-metadata.xml from http://nexus.ops.yangege.cn/repository/maven-public was cached in the local repository, resolution will not be reattempted until the update interval of localRepo has elapsed or updates are forced. Original error: Could not transfer metadata com.github.micro:java-youtube-downloader:3.0.0-SNAPSHOT/maven-metadata.xml from/to localRepo (http://nexus.ops.yangege.cn/repository/maven-public): Connect to nexus.ops.yangege.cn:80 [nexus.ops.yangege.cn/116.62.183.19] failed: Operation timed out (Connection timed out)
+Downloading from localRepo: http://nexus.ops.yangege.cn/repository/maven-public/com/ggj/business/support/business-support-base-api/1.4.2-SNAPSHOT/maven-metadata.xml
+[WARNING] Could not transfer metadata com.ggj.business.support:business-support-base-api:1.4.2-SNAPSHOT/maven-metadata.xml from/to localRepo (http://nexus.ops.yangege.cn/repository/maven-public): Connect to nexus.ops.yangege.cn:80 [nexus.ops.yangege.cn/116.62.183.19] failed: Operation timed out (Connection timed out)
+[WARNING] Failure to transfer com.ggj.business.support:business-support-base-api:1.4.2-SNAPSHOT/maven-metadata.xml from http://nexus.ops.yangege.cn/repository/maven-public was cached in the local repository, resolution will not be reattempted until the update interval of localRepo has elapsed or updates are forced. Original error: Could not transfer metadata com.ggj.business.support:business-support-base-api:1.4.2-SNAPSHOT/maven-metadata.xml from/to localRepo (http://nexus.ops.yangege.cn/repository/maven-public): Connect to nexus.ops.yangege.cn:80 [nexus.ops.yangege.cn/116.62.183.19] failed: Operation timed out (Connection timed out)
+Downloading from localRepo: http://nexus.ops.yangege.cn/repository/maven-public/com/ggj/platform/gsf-api/1.4-SNAPSHOT/maven-metadata.xml
+[WARNING] Could not transfer metadata com.ggj.platform:gsf-api:1.4-SNAPSHOT/maven-metadata.xml from/to localRepo (http://nexus.ops.yangege.cn/repository/maven-public): Connect to nexus.ops.yangege.cn:80 [nexus.ops.yangege.cn/116.62.183.19] failed: Operation timed out (Connection timed out)
+[WARNING] Failure to transfer com.ggj.platform:gsf-api:1.4-SNAPSHOT/maven-metadata.xml from http://nexus.ops.yangege.cn/repository/maven-public was cached in the local repository, resolution will not be reattempted until the update interval of localRepo has elapsed or updates are forced. Original error: Could not transfer metadata com.ggj.platform:gsf-api:1.4-SNAPSHOT/maven-metadata.xml from/to localRepo (http://nexus.ops.yangege.cn/repository/maven-public): Connect to nexus.ops.yangege.cn:80 [nexus.ops.yangege.cn/116.62.183.19] failed: Operation timed out (Connection timed out)
+Downloading from localRepo: http://nexus.ops.yangege.cn/repository/maven-public/com/ggj/platform/gsf-parent/1.4-SNAPSHOT/maven-metadata.xml
+[WARNING] Could not transfer metadata com.ggj.platform:gsf-parent:1.4-SNAPSHOT/maven-metadata.xml from/to localRepo (http://nexus.ops.yangege.cn/repository/maven-public): Connect to nexus.ops.yangege.cn:80 [nexus.ops.yangege.cn/116.62.183.19] failed: Operation timed out (Connection timed out)
+Downloading from localRepo: http://nexus.ops.yangege.cn/repository/maven-public/com/ggj/parent-pom/1.0-SNAPSHOT/maven-metadata.xml
+[WARNING] Could not transfer metadata com.ggj:parent-pom:1.0-SNAPSHOT/maven-metadata.xml from/to localRepo (http://nexus.ops.yangege.cn/repository/maven-public): Connect to nexus.ops.yangege.cn:80 [nexus.ops.yangege.cn/116.62.183.19] failed: Operation timed out (Connection timed out)
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ auto-earn ---
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.10/maven-dependency-analyzer-1.10.pom
+Progress (1): 4.1/6.7 kBProgress (1): 6.7 kB                        Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.10/maven-dependency-analyzer-1.10.pom (6.7 kB at 16 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.pom
+Progress (1): 4.1/7.6 kBProgress (1): 7.6 kB                        Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.pom (7.6 kB at 22 kB/s)
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/commons/commons-compress/1.16.1/commons-compress-1.16.1.jar
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.jar
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.10/maven-dependency-analyzer-1.10.jar
+Downloading from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/codehaus/plexus/plexus-io/3.0.0/plexus-io-3.0.0.jar
+Progress (1): 2.3/560 kBProgress (1): 5.1/560 kBProgress (1): 7.9/560 kBProgress (1): 11/560 kB Progress (1): 14/560 kBProgress (1): 16/560 kBProgress (1): 19/560 kBProgress (1): 22/560 kBProgress (1): 25/560 kBProgress (1): 28/560 kBProgress (1): 30/560 kBProgress (1): 33/560 kBProgress (1): 36/560 kBProgress (1): 39/560 kBProgress (2): 39/560 kB | 2.3/35 kBProgress (2): 39/560 kB | 5.1/35 kBProgress (2): 39/560 kB | 7.9/35 kBProgress (2): 39/560 kB | 11/35 kB Progress (2): 42/560 kB | 11/35 kBProgress (2): 44/560 kB | 11/35 kBProgress (2): 47/560 kB | 11/35 kBProgress (2): 50/560 kB | 11/35 kBProgress (2): 53/560 kB | 11/35 kBProgress (2): 56/560 kB | 11/35 kBProgress (2): 58/560 kB | 11/35 kBProgress (2): 61/560 kB | 11/35 kBProgress (2): 64/560 kB | 11/35 kBProgress (2): 67/560 kB | 11/35 kBProgress (2): 70/560 kB | 11/35 kBProgress (2): 72/560 kB | 11/35 kBProgress (2): 75/560 kB | 11/35 kBProgress (2): 78/560 kB | 11/35 kBProgress (2): 81/560 kB | 11/35 kBProgress (2): 84/560 kB | 11/35 kBProgress (2): 86/560 kB | 11/35 kBProgress (2): 89/560 kB | 11/35 kBProgress (2): 92/560 kB | 11/35 kBProgress (3): 92/560 kB | 11/35 kB | 2.3/123 kBProgress (3): 92/560 kB | 14/35 kB | 2.3/123 kBProgress (3): 92/560 kB | 14/35 kB | 5.1/123 kBProgress (3): 92/560 kB | 14/35 kB | 7.9/123 kBProgress (3): 92/560 kB | 16/35 kB | 7.9/123 kBProgress (3): 92/560 kB | 16/35 kB | 11/123 kB Progress (3): 92/560 kB | 19/35 kB | 11/123 kBProgress (3): 92/560 kB | 22/35 kB | 11/123 kBProgress (3): 92/560 kB | 25/35 kB | 11/123 kBProgress (3): 92/560 kB | 28/35 kB | 11/123 kBProgress (3): 92/560 kB | 30/35 kB | 11/123 kBProgress (3): 92/560 kB | 33/35 kB | 11/123 kBProgress (3): 92/560 kB | 35 kB | 11/123 kB   Progress (4): 92/560 kB | 35 kB | 11/123 kB | 2.3/74 kBProgress (4): 92/560 kB | 35 kB | 11/123 kB | 5.1/74 kBProgress (4): 92/560 kB | 35 kB | 11/123 kB | 7.9/74 kBProgress (4): 92/560 kB | 35 kB | 11/123 kB | 11/74 kB Progress (4): 95/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 98/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 100/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 103/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 106/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 109/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 112/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 114/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 117/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 120/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 123/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 126/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 128/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 131/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 134/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 137/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 140/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 142/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 145/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 148/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 151/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 154/560 kB | 35 kB | 11/123 kB | 11/74 kBProgress (4): 154/560 kB | 35 kB | 14/123 kB | 11/74 kBProgress (4): 156/560 kB | 35 kB | 14/123 kB | 11/74 kBProgress (4): 156/560 kB | 35 kB | 16/123 kB | 11/74 kBProgress (4): 159/560 kB | 35 kB | 16/123 kB | 11/74 kBProgress (4): 159/560 kB | 35 kB | 19/123 kB | 11/74 kBProgress (4): 162/560 kB | 35 kB | 19/123 kB | 11/74 kBProgress (4): 162/560 kB | 35 kB | 22/123 kB | 11/74 kBProgress (4): 165/560 kB | 35 kB | 22/123 kB | 11/74 kBProgress (4): 165/560 kB | 35 kB | 25/123 kB | 11/74 kBProgress (4): 168/560 kB | 35 kB | 25/123 kB | 11/74 kBProgress (4): 168/560 kB | 35 kB | 28/123 kB | 11/74 kBProgress (4): 170/560 kB | 35 kB | 28/123 kB | 11/74 kBProgress (4): 170/560 kB | 35 kB | 30/123 kB | 11/74 kBProgress (4): 173/560 kB | 35 kB | 30/123 kB | 11/74 kBProgress (4): 173/560 kB | 35 kB | 33/123 kB | 11/74 kBProgress (4): 176/560 kB | 35 kB | 33/123 kB | 11/74 kBProgress (4): 176/560 kB | 35 kB | 36/123 kB | 11/74 kBProgress (4): 179/560 kB | 35 kB | 36/123 kB | 11/74 kBProgress (4): 179/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 182/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 184/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 187/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 190/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 193/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 196/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 198/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 11/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 14/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 16/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 19/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 22/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 25/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 28/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 30/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 33/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 36/74 kBProgress (4): 201/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 204/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 207/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 210/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 212/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 215/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 218/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 221/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 224/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 226/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 229/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 232/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 235/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 238/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 240/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 243/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 246/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 249/560 kB | 35 kB | 39/123 kB | 39/74 kBProgress (4): 249/560 kB | 35 kB | 42/123 kB | 39/74 kBProgress (4): 252/560 kB | 35 kB | 42/123 kB | 39/74 kBProgress (4): 252/560 kB | 35 kB | 44/123 kB | 39/74 kBProgress (4): 254/560 kB | 35 kB | 44/123 kB | 39/74 kBProgress (4): 254/560 kB | 35 kB | 47/123 kB | 39/74 kBProgress (4): 257/560 kB | 35 kB | 47/123 kB | 39/74 kBProgress (4): 257/560 kB | 35 kB | 50/123 kB | 39/74 kBProgress (4): 260/560 kB | 35 kB | 50/123 kB | 39/74 kBProgress (4): 260/560 kB | 35 kB | 53/123 kB | 39/74 kBProgress (4): 263/560 kB | 35 kB | 53/123 kB | 39/74 kBProgress (4): 263/560 kB | 35 kB | 56/123 kB | 39/74 kBProgress (4): 266/560 kB | 35 kB | 56/123 kB | 39/74 kBProgress (4): 266/560 kB | 35 kB | 58/123 kB | 39/74 kBProgress (4): 268/560 kB | 35 kB | 58/123 kB | 39/74 kBProgress (4): 268/560 kB | 35 kB | 61/123 kB | 39/74 kBProgress (4): 271/560 kB | 35 kB | 61/123 kB | 39/74 kBProgress (4): 271/560 kB | 35 kB | 64/123 kB | 39/74 kBProgress (4): 274/560 kB | 35 kB | 64/123 kB | 39/74 kBProgress (4): 274/560 kB | 35 kB | 67/123 kB | 39/74 kBProgress (4): 277/560 kB | 35 kB | 67/123 kB | 39/74 kBProgress (4): 277/560 kB | 35 kB | 70/123 kB | 39/74 kBProgress (4): 280/560 kB | 35 kB | 70/123 kB | 39/74 kBProgress (4): 280/560 kB | 35 kB | 72/123 kB | 39/74 kBProgress (4): 282/560 kB | 35 kB | 72/123 kB | 39/74 kBProgress (4): 282/560 kB | 35 kB | 75/123 kB | 39/74 kBProgress (4): 285/560 kB | 35 kB | 75/123 kB | 39/74 kBProgress (4): 285/560 kB | 35 kB | 78/123 kB | 39/74 kBProgress (4): 288/560 kB | 35 kB | 78/123 kB | 39/74 kBProgress (4): 288/560 kB | 35 kB | 81/123 kB | 39/74 kBProgress (4): 291/560 kB | 35 kB | 81/123 kB | 39/74 kBProgress (4): 291/560 kB | 35 kB | 84/123 kB | 39/74 kBProgress (4): 294/560 kB | 35 kB | 84/123 kB | 39/74 kBProgress (4): 294/560 kB | 35 kB | 86/123 kB | 39/74 kBProgress (4): 296/560 kB | 35 kB | 86/123 kB | 39/74 kBProgress (4): 296/560 kB | 35 kB | 89/123 kB | 39/74 kBProgress (4): 299/560 kB | 35 kB | 89/123 kB | 39/74 kBProgress (4): 302/560 kB | 35 kB | 89/123 kB | 39/74 kBProgress (4): 305/560 kB | 35 kB | 89/123 kB | 39/74 kBProgress (4): 308/560 kB | 35 kB | 89/123 kB | 39/74 kBProgress (4): 310/560 kB | 35 kB | 89/123 kB | 39/74 kBProgress (4): 310/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 313/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 316/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 319/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 322/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 324/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 327/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 330/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 333/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 336/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 338/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 341/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 344/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 347/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 350/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 352/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 355/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 358/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 361/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 364/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 366/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 369/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 372/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 375/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 378/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 380/560 kB | 35 kB | 92/123 kB | 39/74 kBProgress (4): 380/560 kB | 35 kB | 92/123 kB | 42/74 kBProgress (4): 383/560 kB | 35 kB | 92/123 kB | 42/74 kBProgress (4): 386/560 kB | 35 kB | 92/123 kB | 42/74 kBProgress (4): 386/560 kB | 35 kB | 92/123 kB | 44/74 kBProgress (4): 389/560 kB | 35 kB | 92/123 kB | 44/74 kBProgress (4): 389/560 kB | 35 kB | 92/123 kB | 47/74 kBProgress (4): 392/560 kB | 35 kB | 92/123 kB | 47/74 kBProgress (4): 392/560 kB | 35 kB | 92/123 kB | 50/74 kBProgress (4): 394/560 kB | 35 kB | 92/123 kB | 50/74 kBProgress (4): 394/560 kB | 35 kB | 92/123 kB | 53/74 kBProgress (4): 397/560 kB | 35 kB | 92/123 kB | 53/74 kBProgress (4): 397/560 kB | 35 kB | 92/123 kB | 56/74 kBProgress (4): 400/560 kB | 35 kB | 92/123 kB | 56/74 kBProgress (4): 400/560 kB | 35 kB | 92/123 kB | 58/74 kBProgress (4): 403/560 kB | 35 kB | 92/123 kB | 58/74 kBProgress (4): 403/560 kB | 35 kB | 92/123 kB | 61/74 kBProgress (4): 406/560 kB | 35 kB | 92/123 kB | 61/74 kBProgress (4): 406/560 kB | 35 kB | 92/123 kB | 64/74 kBProgress (4): 408/560 kB | 35 kB | 92/123 kB | 64/74 kBProgress (4): 408/560 kB | 35 kB | 92/123 kB | 67/74 kBProgress (4): 411/560 kB | 35 kB | 92/123 kB | 67/74 kBProgress (4): 411/560 kB | 35 kB | 92/123 kB | 70/74 kBProgress (4): 414/560 kB | 35 kB | 92/123 kB | 70/74 kBProgress (4): 414/560 kB | 35 kB | 92/123 kB | 72/74 kBProgress (4): 417/560 kB | 35 kB | 92/123 kB | 72/74 kBProgress (4): 417/560 kB | 35 kB | 92/123 kB | 74 kB   Progress (4): 420/560 kB | 35 kB | 92/123 kB | 74 kBProgress (4): 420/560 kB | 35 kB | 95/123 kB | 74 kBProgress (4): 420/560 kB | 35 kB | 98/123 kB | 74 kBProgress (4): 420/560 kB | 35 kB | 100/123 kB | 74 kBProgress (4): 422/560 kB | 35 kB | 100/123 kB | 74 kBProgress (4): 425/560 kB | 35 kB | 100/123 kB | 74 kBProgress (4): 428/560 kB | 35 kB | 100/123 kB | 74 kBProgress (4): 431/560 kB | 35 kB | 100/123 kB | 74 kBProgress (4): 434/560 kB | 35 kB | 100/123 kB | 74 kBProgress (4): 434/560 kB | 35 kB | 103/123 kB | 74 kBProgress (4): 436/560 kB | 35 kB | 103/123 kB | 74 kBProgress (4): 436/560 kB | 35 kB | 106/123 kB | 74 kBProgress (4): 439/560 kB | 35 kB | 106/123 kB | 74 kBProgress (4): 439/560 kB | 35 kB | 109/123 kB | 74 kBProgress (4): 442/560 kB | 35 kB | 109/123 kB | 74 kBProgress (4): 442/560 kB | 35 kB | 112/123 kB | 74 kBProgress (4): 445/560 kB | 35 kB | 112/123 kB | 74 kBProgress (4): 445/560 kB | 35 kB | 114/123 kB | 74 kBProgress (4): 448/560 kB | 35 kB | 114/123 kB | 74 kBProgress (4): 448/560 kB | 35 kB | 117/123 kB | 74 kBProgress (4): 450/560 kB | 35 kB | 117/123 kB | 74 kBProgress (4): 450/560 kB | 35 kB | 120/123 kB | 74 kBProgress (4): 453/560 kB | 35 kB | 120/123 kB | 74 kBProgress (4): 453/560 kB | 35 kB | 123/123 kB | 74 kBProgress (4): 456/560 kB | 35 kB | 123/123 kB | 74 kBProgress (4): 456/560 kB | 35 kB | 123 kB | 74 kB    Progress (4): 459/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 462/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 464/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 467/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 470/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 473/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 476/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 478/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 481/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 484/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 487/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 490/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 492/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 495/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 498/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 501/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 504/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 506/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 509/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 512/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 515/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 518/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 520/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 523/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 526/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 529/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 532/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 534/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 537/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 540/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 543/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 546/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 548/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 551/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 554/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 557/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 560/560 kB | 35 kB | 123 kB | 74 kBProgress (4): 560 kB | 35 kB | 123 kB | 74 kB                                                 Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/codehaus/plexus/plexus-io/3.0.0/plexus-io-3.0.0.jar (74 kB at 116 kB/s)
+Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.jar (123 kB at 193 kB/s)
+Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/commons/commons-compress/1.16.1/commons-compress-1.16.1.jar (560 kB at 848 kB/s)
+Downloaded from aliyunMirror: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.10/maven-dependency-analyzer-1.10.jar (35 kB at 53 kB/s)
+[INFO] org.micro.earn:auto-earn:jar:1.0-SNAPSHOT
+[INFO] +- com.google.guava:guava:jar:22.0:compile
+[INFO] |  +- com.google.code.findbugs:jsr305:jar:1.3.9:compile
+[INFO] |  +- com.google.errorprone:error_prone_annotations:jar:2.0.18:compile
+[INFO] |  +- com.google.j2objc:j2objc-annotations:jar:1.1:compile
+[INFO] |  \- org.codehaus.mojo:animal-sniffer-annotations:jar:1.14:compile
+[INFO] +- org.projectlombok:lombok:jar:1.18.4:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- org.apache.commons:commons-lang3:jar:3.5:compile
+[INFO] +- com.github.igor-suhorukov:instagramscraper:jar:2.2:compile
+[INFO] |  +- com.squareup.okhttp3:okhttp:jar:3.14.4:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.10.1:compile
+[INFO] |  |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.10.1:compile
+[INFO] |  +- com.github.igor-suhorukov:dom-transformation:jar:1.1:compile
+[INFO] |  +- org.hibernate.javax.persistence:hibernate-jpa-2.1-api:jar:1.0.0.Final:compile
+[INFO] |  +- org.eclipse.persistence:org.eclipse.persistence.moxy:jar:2.7.0:compile
+[INFO] |  |  +- org.eclipse.persistence:org.eclipse.persistence.core:jar:2.7.0:compile
+[INFO] |  |  |  \- org.eclipse.persistence:org.eclipse.persistence.asm:jar:2.7.0:compile
+[INFO] |  |  \- org.glassfish:javax.json:jar:1.0.4:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.9.3:compile
+[INFO] |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-aop:jar:1.5.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.2.2.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot:jar:2.2.2.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.2.2.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.2.2.RELEASE:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.3:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.2.3:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.12.1:compile
+[INFO] |  |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.29:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  +- org.springframework:spring-core:jar:5.2.2.RELEASE:compile
+[INFO] |  |  |  \- org.springframework:spring-jcl:jar:5.2.2.RELEASE:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.25:runtime
+[INFO] |  +- org.springframework:spring-aop:jar:5.2.2.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-beans:jar:5.2.2.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.9.5:compile
+[INFO] +- junit:junit:jar:4.13:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:2.1:test
+[INFO] |     \- org.hamcrest:hamcrest:jar:2.1:test
+[INFO] +- com.github.micro:java-youtube-downloader:jar:3.0.0-SNAPSHOT:compile
+[INFO] +- com.squareup.okhttp3:logging-interceptor:jar:4.4.0:compile
+[INFO] +- com.ggj.item.stock:stock-api:jar:1.0.33-SNAPSHOT:compile
+[INFO] |  +- com.ggj.business.support:business-support-base-api:jar:1.4.2-SNAPSHOT:compile
+[INFO] |  |  \- com.ggj.platform:gsf-api:jar:1.4-SNAPSHOT:compile
+[INFO] |  |     +- com.alibaba:dubbo:jar:2.8.4.1:compile
+[INFO] |  |     |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |     |  +- io.netty:netty:jar:3.7.0.Final:compile
+[INFO] |  |     |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |     |  +- javax.servlet:javax.servlet-api:jar:4.0.1:compile
+[INFO] |  |     |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |     |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |     |  \- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  |     +- com.101tec:zkclient:jar:0.10:compile
+[INFO] |  |     +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  |     |  \- jline:jline:jar:0.9.94:compile
+[INFO] |  |     +- javax.el:javax.el-api:jar:2.2.4:runtime
+[INFO] |  |     \- com.sun.el:el-ri:jar:1.0:runtime
+[INFO] |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO] |  +- com.dyuproject.protostuff:protostuff-core:jar:1.1.3:compile
+[INFO] |  |  \- com.dyuproject.protostuff:protostuff-api:jar:1.1.3:compile
+[INFO] |  \- com.dyuproject.protostuff:protostuff-runtime:jar:1.1.3:compile
+[INFO] |     \- com.dyuproject.protostuff:protostuff-collectionschema:jar:1.1.3:compile
+[INFO] +- org.jetbrains.kotlin:kotlin-runtime:jar:1.1.3:compile
+[INFO] |  \- org.jetbrains:annotations:jar:13.0:compile
+[INFO] +- org.jetbrains.kotlin:kotlin-stdlib:jar:1.1.3:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-core:jar:2.11.0:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.40:compile
+[INFO] +- net.sourceforge.htmlunit:htmlunit:jar:2.9:compile
+[INFO] |  +- xalan:xalan:jar:2.7.1:compile
+[INFO] |  |  \- xalan:serializer:jar:2.7.1:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] |  +- org.apache.httpcomponents:httpmime:jar:4.5.10:compile
+[INFO] |  +- commons-codec:commons-codec:jar:1.13:compile
+[INFO] |  +- net.sourceforge.htmlunit:htmlunit-core-js:jar:2.9:compile
+[INFO] |  +- xerces:xercesImpl:jar:2.9.1:compile
+[INFO] |  |  \- xml-apis:xml-apis:jar:1.3.04:compile
+[INFO] |  +- net.sourceforge.nekohtml:nekohtml:jar:1.9.22:compile
+[INFO] |  \- net.sourceforge.cssparser:cssparser:jar:0.9.5:compile
+[INFO] |     \- org.w3c.css:sac:jar:1.3:compile
+[INFO] +- org.apache.httpcomponents:httpclient:jar:4.5.12:compile
+[INFO] |  \- org.apache.httpcomponents:httpcore:jar:4.4.12:compile
+[INFO] +- org.seleniumhq.selenium:selenium-java:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-api:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-chrome-driver:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-edge-driver:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-firefox-driver:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-ie-driver:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-opera-driver:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-remote-driver:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-safari-driver:jar:3.141.59:compile
+[INFO] |  +- org.seleniumhq.selenium:selenium-support:jar:3.141.59:compile
+[INFO] |  +- net.bytebuddy:byte-buddy:jar:1.10.4:compile
+[INFO] |  +- org.apache.commons:commons-exec:jar:1.3:compile
+[INFO] |  \- com.squareup.okio:okio:jar:1.14.0:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.3.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.2.2.RELEASE:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.10.1:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.10.1:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.10.1:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.2.2.RELEASE:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.29:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.29:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.29:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.2.2.RELEASE:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.2.2.RELEASE:compile
+[INFO] |     +- org.springframework:spring-context:jar:5.2.2.RELEASE:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.2.2.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.3.1.RELEASE:compile
+[INFO] |  +- org.thymeleaf:thymeleaf-spring5:jar:3.0.11.RELEASE:compile
+[INFO] |  |  +- org.thymeleaf:thymeleaf:jar:3.0.11.RELEASE:compile
+[INFO] |  |  |  +- org.attoparser:attoparser:jar:2.0.5.RELEASE:compile
+[INFO] |  |  |  \- org.unbescape:unbescape:jar:1.1.6.RELEASE:compile
+[INFO] |  |  \- org.slf4j:slf4j-api:jar:1.7.29:compile
+[INFO] |  \- org.thymeleaf.extras:thymeleaf-extras-java8time:jar:3.0.4.RELEASE:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.2.4.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO] +- org.apache.poi:poi:jar:3.9:compile
+[INFO] \- org.apache.poi:poi-ooxml:jar:3.9:compile
+[INFO]    +- org.apache.poi:poi-ooxml-schemas:jar:3.9:compile
+[INFO]    |  \- org.apache.xmlbeans:xmlbeans:jar:2.3.0:compile
+[INFO]    |     \- stax:stax-api:jar:1.0.1:compile
+[INFO]    \- dom4j:dom4j:jar:1.6.1:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  06:25 min
+[INFO] Finished at: 2021-01-23T07:47:45+08:00
+[INFO] ------------------------------------------------------------------------

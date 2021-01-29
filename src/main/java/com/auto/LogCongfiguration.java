@@ -1,23 +1,23 @@
 package com.auto;
 
-import com.alibaba.dubbo.rpc.Invoker;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.aopalliance.intercept.MethodInterceptor;
-import org.aopalliance.intercept.MethodInvocation;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 
 import javax.annotation.PostConstruct;
-import java.lang.reflect.Method;
 
 /**
  * @author : jihai
@@ -29,29 +29,24 @@ import java.lang.reflect.Method;
  */
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@Profile({"test", "dev", "default"})
+@Profile({"test", "default"})
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class LogCongfiguration {
-
-    public static void main(String[] args) {
-        String a = "a";
-        System.out.println(a.getClass().getDeclaringClass().isAssignableFrom(String.class));
-    }
 
     @PostConstruct
     public void init() {
-        LoggerFactory.getLogger(Contants.TEST_LOG).info("init test log.");
+        LoggerFactory.getLogger(Contants.TEST_LOG).info("当前环境打开rest拦截.");
     }
 
     @Bean
-    public DubboConsumerAspect dubboConsumerAspect() {
-        return new DubboConsumerAspect();
+    public LogAspect controllerAop() {
+        return new LogAspect();
     }
 
     @Bean
-    public ControllerAop controllerAop() {
-        return new ControllerAop();
+    public Monitor monitor() {
+        return new Monitor();
     }
-
 }
 
 interface Contants {
@@ -62,34 +57,23 @@ class MethodSupport {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    protected void printMethod(ProceedingJoinPoint proceedingJoinPoint) {
+    protected Object printMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         try {
             MethodRecord methodRecord = getMethodCall(proceedingJoinPoint);
             logOut(methodRecord);
+            return methodRecord.getRet();
         } catch (Throwable throwable) {
             logOut("日志切面异常");
             logOut(throwable.toString());
+            return proceedingJoinPoint.proceed();
         }
     }
 
-    protected void printInvacationMethod(MethodInvocation methodInvocation, long cost, Object ret) {
-        Method method = methodInvocation.getMethod();
-        String methodName = method.getDeclaringClass() + "." + method.getName();
-        StringBuffer params = new StringBuffer();
-        if (methodInvocation.getArguments().length > 0) {
-            for (Object p : methodInvocation.getArguments()) {
-                params.append(p).append(",");
-            }
-            if (params.length() > 0) params.delete(params.length() - 1, params.length());
-        }
-        logOut(methodName + "#" + params + ";ret:" + ret);
-    }
-
-    private void logOut(MethodRecord callString) {
+    protected void logOut(MethodRecord callString) {
         logOut(callString.getCallString() + ",cost:" + callString.getCost() + "ms");
     }
 
-    private void logOut(String log) {
+    protected void logOut(String log) {
         Logger logger = LoggerFactory.getLogger(Contants.TEST_LOG);
         logger.info(log);
     }
@@ -110,20 +94,30 @@ class MethodSupport {
         Object ret = proceedingJoinPoint.proceed();
         long end = System.currentTimeMillis();
         retStr.append(";ret:").append(objectMapper.writeValueAsString(ret));
-        return new MethodRecord(retStr.toString(), (end - start));
+        return new MethodRecord(retStr.toString(), (end - start), ret);
     }
 
     static class MethodRecord {
         private String callString;
         private long cost;
+        private Object ret;
 
-        public MethodRecord(String callString, long cost) {
+        public MethodRecord(String callString, long cost, Object ret) {
             this.callString = callString;
             this.cost = cost;
+            this.ret = ret;
         }
 
         public String getCallString() {
             return callString;
+        }
+
+        public Object getRet() {
+            return ret;
+        }
+
+        public void setRet(Object ret) {
+            this.ret = ret;
         }
 
         public void setCallString(String callString) {
@@ -140,42 +134,33 @@ class MethodSupport {
     }
 }
 
-class DubboConsumerAspect extends StaticMethodMatcherPointcutAdvisor {
+@Aspect
+class LogAspect extends MethodSupport {
 
-    @Override
-    public boolean matches(Method method, Class<?> targetClass) {
-        setAdvice(new LogApiAdvice());
-        return targetClass.isAssignableFrom(Invoker.class);
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    public void point() {
+    }
+
+
+    @Around("point()")
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        // 打印切面
+        return super.printMethod(proceedingJoinPoint);
     }
 }
 
-
-/**
- * controller aop
- */
-class ControllerAop extends StaticMethodMatcherPointcutAdvisor {
+class Monitor implements BeanPostProcessor {
     @Override
-    public boolean matches(Method method, Class<?> targetClass) {
-        setAdvice(new LogApiAdvice());
-        return method.getDeclaringClass().isAnnotationPresent(Controller.class) || method.getDeclaringClass().isAnnotationPresent(RestController.class);
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("load bean : " + beanName);
+        return bean;
     }
 
-}
-
-/**
- * log advice
- */
-class LogApiAdvice extends MethodSupport implements MethodInterceptor {
-
     @Override
-    public Object invoke(MethodInvocation invocation) throws Throwable {
-        long start = System.currentTimeMillis();
-        Object ret = invocation.proceed();
-        long end = System.currentTimeMillis();
-        super.printInvacationMethod(invocation, end - start, ret);
-        return ret;
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
     }
-
 }
+
 
 
