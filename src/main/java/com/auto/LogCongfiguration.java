@@ -1,12 +1,19 @@
 package com.auto;
 
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.core.Context;
+import ch.qos.logback.core.joran.spi.*;
+import ch.qos.logback.core.rolling.RollingFileAppender;
+import ch.qos.logback.core.rolling.TimeBasedRollingPolicy;
+import ch.qos.logback.core.spi.ContextAware;
+import ch.qos.logback.core.spi.ContextAwareBase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -31,11 +38,11 @@ import javax.annotation.PostConstruct;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @Profile({"test", "default"})
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class LogCongfiguration {
+public class LogCongfiguration extends MethodSupport {
 
     @PostConstruct
     public void init() {
-        LoggerFactory.getLogger(Contants.TEST_LOG).info("当前环境打开rest拦截.");
+        logOut("当前环境打开rest拦截.");
     }
 
     @Bean
@@ -53,9 +60,11 @@ interface Contants {
     String TEST_LOG = "test-log";
 }
 
-class MethodSupport {
+class MethodSupport extends ContextAwareBase {
 
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    private static Logger logger;
 
     protected Object printMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         try {
@@ -73,10 +82,34 @@ class MethodSupport {
         logOut(callString.getCallString() + ",cost:" + callString.getCost() + "ms");
     }
 
+    // 1 3 5
+    // 2 4
+    @Override
+    public void setContext(Context context) {
+        super.setContext(context);
+        System.out.println("设置context");
+    }
+
     protected void logOut(String log) {
-        Logger logger = LoggerFactory.getLogger(Contants.TEST_LOG);
+
+        if (logger == null) {
+            RuleStore rs = new SimpleRuleStore(context);
+            Interpreter interpreter = new Interpreter(context, rs, new ElementPath());
+            InterpretationContext interpretationContext = new InterpretationContext(context, interpreter);
+            String loggerPath = interpretationContext.subst("${LOG_HOME}/test.log");
+
+            logger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("test-log");
+            RollingFileAppender rollingFileAppender = new RollingFileAppender();
+            rollingFileAppender.setFile(loggerPath);
+
+            rollingFileAppender.setContext(context);
+
+            logger.addAppender(rollingFileAppender);
+        }
+
         logger.info(log);
     }
+
 
     private MethodRecord getMethodCall(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
@@ -149,10 +182,10 @@ class LogAspect extends MethodSupport {
     }
 }
 
-class Monitor implements BeanPostProcessor {
+class Monitor extends MethodSupport implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("load bean : " + beanName);
+        logOut("load bean : " + beanName);
         return bean;
     }
 
