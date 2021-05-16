@@ -1,6 +1,8 @@
 package com.auto.test;
 
+import com.auto.interview.algorithm.leetcode.base.ListNode;
 import com.auto.interview.algorithm.leetcode.utils.Assert;
+import com.auto.interview.algorithm.leetcode.utils.NodeUtils;
 
 /**
  * @author : jihai
@@ -19,9 +21,13 @@ import com.auto.interview.algorithm.leetcode.utils.Assert;
 public class AddSum {
 
     public static void main(String[] args) {
-        AddSum addSum = new AddSum();
-        Assert.assertTrue(addSum.addSum("123", "321").equals("444"));
-        Assert.assertTrue(addSum.addSum("754", "321").equals("1075"));
+        ListNode listNode = NodeUtils.buildListNode(1, 2, 3, 4);
+
+        ListNode listNode1 = NodeUtils.buildListNode(5, 6);
+        listNode1.next.next = listNode.next;
+
+        System.out.println(getIntersectionNode(listNode, listNode1).val);;
+
     }
 
     /**
@@ -31,37 +37,32 @@ public class AddSum {
      * 字符串转换为字符，字符ascii码转换成数字
      *
      */
-    public String addSum(String num1, String num2) {
-        StringBuffer reverse1 = new StringBuffer(num1).reverse();
-        StringBuffer reverse2 = new StringBuffer(num2).reverse();
-        char[] chars1 = reverse1.toString().toCharArray();
-        char[] chars2 = reverse2.toString().toCharArray();
-
-        int carr = 0;
-        int first = 0, second = 0;
-        int sum = 0, n = 1;
-        while (first < chars1.length || second < chars2.length) {
-            int temp = 0;
-            if (carr > 0) {
-                temp += carr;
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) return null;
+        ListNode p1 = headA, p2 = headB;
+        boolean flag1 = true, flag2 = true;
+        while (true) {
+            if (p1 == p2) return p1;
+            p1 = p1.next;
+            p2 = p2.next;
+            if (p1 == null) {
+                if (flag1) {
+                    p1 = headB;
+                    flag1 = false;
+                } else {
+                    p1 = headA;
+                    flag1 = true;
+                }
             }
-            if (first < chars1.length) {
-                temp += char2Num(chars1[first ++]);
+            if (p2 == null) {
+                if (flag2) {
+                    p2 = headA;
+                    flag2 = false;
+                } else {
+                    p2 = headB;
+                    flag2 = true;
+                }
             }
-            if (second < chars2.length) {
-                temp += char2Num(chars2[second ++]);
-            }
-            sum +=  (temp % 10) * n;
-            carr = temp / 10;
-            n *= 10;
         }
-        if (carr >= 1) {
-            sum += carr * n;
-        }
-        return new StringBuffer(sum).reverse().toString();
-    }
-
-    private int char2Num(char c) {
-        return (int)c  - 48;
     }
 }

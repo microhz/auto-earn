@@ -15,13 +15,17 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.PointerInput;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static org.openqa.selenium.interactions.PointerInput.Kind.MOUSE;
 
 /**
  * @author : jihai
@@ -30,7 +34,7 @@ import java.util.stream.Collectors;
  */
 public class ByteDance extends ChromeSupport {
 
-    private static final String TOUTIAO_PAGE = "https://www.toutiao.com/";
+    private static final String TOUTIAO_PAGE = "https://sso.toutiao.com/login/";
     private static final String CURRENT_ROBOT_TEST_IMAGE = "robot-test";
     private static final String MANAGE_PAGE_URL = "https://mp.toutiao.com/profile_v3/xigua/content-analysis";
     //    private static final String USER_NAME = "13018937935";
@@ -239,24 +243,21 @@ public class ByteDance extends ChromeSupport {
 
 
     public void login(String username, String pwd) {
-        WebElement loginButtonEl = webDriver.findElement(By.xpath("//button[@class='login-button']"));
-        loginButtonEl.click();
-        LogUtils.print("click to login");
-        sleep(300);
+        sleep(2000);
 
         // 密码登陆
-        WebElement keyPwdPageEl = webDriver.findElement(By.xpath("//img[@class='login-type-icon']"));
+        WebElement keyPwdPageEl = webDriver.findElement(By.xpath("//i[@class='web-login-other-login-method__list__item__icon web-login-other-login-method__list__item__icon__account_pwd']"));
         keyPwdPageEl.click();
 
         sleep(200);
 
-        WebElement usernameEl = webDriver.findElement(By.ById.id("user-name"));
-        WebElement passwordEl = webDriver.findElement(By.ById.id("password"));
+        WebElement usernameEl = webDriver.findElement(By.xpath("//input[@class='web-login-normal-input__input']"));
+        WebElement passwordEl = webDriver.findElement(By.xpath("//input[@class='web-login-button-input__input']"));
 
         usernameEl.sendKeys(username);
         passwordEl.sendKeys(pwd);
 
-        WebElement submitEl = webDriver.findElement(By.ById.id("bytedance-login-submit"));
+        WebElement submitEl = webDriver.findElement(By.xpath("//button[@class='web-login-button']"));
         submitEl.click();
 
         // 获取验证码并破解
@@ -292,17 +293,28 @@ public class ByteDance extends ChromeSupport {
     }
 
     private void moveButton(double sliteRate) {
-        WebElement moveButtonEl = webDriver.findElement(By.xpath("//div[@class='secsdk-captcha-drag-icon sc-ckVGcZ gZcwqQ']"));
+        WebElement moveButtonEl = webDriver.findElement(By.xpath("//div[@class='secsdk-captcha-drag-icon sc-jKJlTe fsBatO']"));
         Actions moveAction = new Actions(webDriver);
+        PointerInput defaultMouse = new PointerInput(MOUSE, "move verify code mouse");
+        moveAction.tick(defaultMouse.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.pointer(), 0, 0));
+        moveAction.perform();
         moveAction.clickAndHold(moveButtonEl);
 
         // 随机滑动步数
         int targetMoveCount = (int) (280 * sliteRate);
 
+        List<Integer> stepList = Lists.newArrayList();
+        // 正态分布
         for (Integer count : getRandomStep(targetMoveCount)) {
-            moveAction.moveByOffset(count, 0);
+//            System.out.println("move offset " + count);
+            stepList.add(count);
+        }
+
+        for (int i = 0; i < stepList.size(); i++) {
+            moveAction.moveByOffset(stepList.get(i), 0);
             moveAction.perform();
         }
+        sleep(1000);
         moveAction.release(moveButtonEl).perform();
         waitLongLoading();
     }
@@ -315,6 +327,21 @@ public class ByteDance extends ChromeSupport {
             targetMoveCount -= count;
         }
         return list;
+
+        /*int step = targetMoveCount / 2;
+        while (step > 0) {
+            int count = RandomUtils.nextInt(0, step + 1);
+            list.add(count);
+            step -= count;
+        }
+        Collections.reverse(list);
+        step = targetMoveCount / 2;
+        while (step > 0) {
+            int count = RandomUtils.nextInt(0, step + 1);
+            list.add(count);
+            step -= count;
+        }
+        return list;*/
     }
 
     private double getSlideRate(String imageName) {
@@ -338,7 +365,12 @@ public class ByteDance extends ChromeSupport {
                     int blueV = (rgb & 0xff);
 
                     // 分析发现，数值越大，越接近白色，因此这里分别判断三个值，达到230即可标记为一个较白的点
-                    if (redV > 230 && greenV > 230 && blueV > 230) {
+
+                    boolean isWhite = redV > 230 && greenV > 230 && blueV > 230;
+                    boolean leftAndRightObvious = (i + 5 < width && isObviousWidth(image, i + 5, j)) || (i - 5 > 0 && isObviousWidth(image, i - 5, j));
+
+
+                    if (isWhite && leftAndRightObvious) {
                         widthEdgeList.add(i);
                     }
                 }
@@ -354,7 +386,7 @@ public class ByteDance extends ChromeSupport {
                 if (o1.size() > o2.size()) {
                     return -1;
                 } else if (o1.size() < o2.size()) {
-                    return 1;
+                     return 1;
                 }
                 return 0;
             });
@@ -374,6 +406,15 @@ public class ByteDance extends ChromeSupport {
         return 0;
     }
 
+    private boolean isObviousWidth(BufferedImage image, int i, int j) {
+        int rgb = image.getRGB(i, j);
+        int redV = (rgb & 0xff0000) >> 16;
+        int greenV = (rgb & 0xff00) >> 8;
+        int blueV = (rgb & 0xff);
+
+        return redV < 100 && greenV < 100 && blueV < 100;
+    }
+
     /**
      * 发现会根据50%的偏移量需要增量
      * @param rate
@@ -382,20 +423,22 @@ public class ByteDance extends ChromeSupport {
     private double zoomRate(double rate) {
         double originRate = rate;
         if (rate < 0.45) {
-            rate -= 0.02;
+            rate += 0.01;
         }
-        if (rate >= 0.45 && rate < 0.6) {
-            return rate;
-        } else if (rate >= 0.6 && rate < 0.67) {
+        if (rate >= 0.45 && rate < 0.5) {
+            rate += 0;
+        }  else if (rate >= 0.5 && rate < 0.6) {
+            rate += 0.01;
+        } else if (rate >= 0.6 && rate < 0.7) {
             rate += 0.02;
-        } else if (rate >= 0.67 && rate < 0.75){
-            rate += 0.02;
+        } else if (rate >= 0.7 && rate < 0.75){
+            rate += 0.03;
         } else if (rate >= 0.75 && rate < 0.8){
-            rate += 0.05;
+            rate += 0.04;
         } else if (rate > 0.8) {
-            rate += 0.07;
+            rate += 0.05;
         } else if (rate > 0.9) {
-            rate += 0.1;
+            rate += 0.06;
         }
         LogUtils.print("kill robot slide rate %s, zoom rate %s", originRate, rate);
         return rate;
@@ -423,6 +466,17 @@ public class ByteDance extends ChromeSupport {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+
+        String imageUrl = "https://p9-security.byteimg.com/img/rc-captcha/slide_82e8b4dfecf65a20ae0095d23fe1e29d7a1f729a_1.jpg~tplv-obj.image";
+        ByteDance byteDance = new ByteDance();
+
+        ImageDownload imageDownload = new ImageDownload();
+        imageDownload.dowloadImage(imageUrl, CURRENT_ROBOT_TEST_IMAGE);
+        double slideRate = byteDance.getSlideRate(CURRENT_ROBOT_TEST_IMAGE);
+        System.out.println(slideRate);
     }
 
     private void openMangePage() {

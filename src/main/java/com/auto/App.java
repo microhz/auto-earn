@@ -53,7 +53,7 @@ public class App {
 //            testDT();
 
 //            // 下载youtube视频
-            downloadYoutube("pc27fivPszM", "杭州4分钟", 2160, "杭州");
+//            downloadYoutube("pc27fivPszM", "杭州4分钟", 2160, "杭州");
 
 
 //            downloadYoutube("6tUWYXe9qbY", "这车是活的", 720, "汽车油管");
@@ -101,18 +101,19 @@ public class App {
      * 根据配置文件
      */
     private static void autoDownloadAndUpload() {
+        ChromeSupport.clearBatchDir();
+        ByteDance byteDance = new ByteDance();
         try {
-            ChromeSupport.clearBatchDir();
+//            InstagramClient instagramClient = new InstagramClient();
+//            instagramClient.batchDownloadFromConfig();
 
-            InstagramClient instagramClient = new InstagramClient();
-            instagramClient.batchDownloadFromConfig();
-
-            ByteDance byteDance = new ByteDance();
             byteDance.uploadFromConfig();
 
             LogUtils.print("上传完毕");
         } catch (Exception e) {
             LogUtils.errorPrint(e, "批量上传失败");
+        } finally {
+            byteDance.closeDriver();
         }
     }
 
