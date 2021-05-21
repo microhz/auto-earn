@@ -177,6 +177,13 @@
             <version>1.5.1.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.openpnp</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.3.0-3</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

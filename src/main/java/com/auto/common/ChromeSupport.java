@@ -2,6 +2,7 @@ package com.auto.common;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
 import java.io.IOException;
@@ -89,7 +91,10 @@ public abstract class ChromeSupport {
         System.setProperty("webdriver.chrome.driver", "/Users/mapeichuan/github/chromedriver");
         ChromeDriverService chromeDriverService = new ChromeDriverService.Builder().usingPort(8081).build();
         chromeDriverService.start();
-        webDriver = new ChromeDriver(chromeDriverService);
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("excludeSwitches", Lists.newArrayList("enable-automation"));
+        options.addArguments("--disable-blink-features=AutomationControlled");
+        webDriver = new ChromeDriver(chromeDriverService, options);
     }
 
     /**

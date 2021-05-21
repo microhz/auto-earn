@@ -313,8 +313,11 @@ public class ByteDance extends ChromeSupport {
         for (int i = 0; i < stepList.size(); i++) {
             moveAction.moveByOffset(stepList.get(i), 0);
             moveAction.perform();
+//            sleep(RandomUtils.nextInt(0, 50));
         }
-        sleep(1000);
+        moveAction.perform();
+
+        sleep(200);
         moveAction.release(moveButtonEl).perform();
         waitLongLoading();
     }
@@ -322,27 +325,25 @@ public class ByteDance extends ChromeSupport {
     public List<Integer> getRandomStep(int targetMoveCount) {
         List<Integer> list = Lists.newArrayList();
         while (targetMoveCount > 0) {
-            int count = RandomUtils.nextInt(0, targetMoveCount + 1);
+            int count = RandomUtils.nextInt(0, targetMoveCount);
             list.add(count);
             targetMoveCount -= count;
         }
-        return list;
 
-        /*int step = targetMoveCount / 2;
-        while (step > 0) {
-            int count = RandomUtils.nextInt(0, step + 1);
-            list.add(count);
-            step -= count;
-        }
-        Collections.reverse(list);
-        step = targetMoveCount / 2;
-        while (step > 0) {
-            int count = RandomUtils.nextInt(0, step + 1);
-            list.add(count);
-            step -= count;
-        }
-        return list;*/
+        return list;
     }
+
+    public List<Integer> getRandomStep2(int targetMoveCount) {
+        List<Integer> list = Lists.newArrayList();
+        while (targetMoveCount > 1) {
+            int count = targetMoveCount / 2;
+            list.add(count);
+            targetMoveCount -= count;
+        }
+        list.add(1);
+        return list;
+    }
+
 
     private double getSlideRate(String imageName) {
         try {
@@ -359,7 +360,7 @@ public class ByteDance extends ChromeSupport {
             for (int i = 0;i < width;i ++) {
                 for (int j = 0; j < height; j++) {
                     // 这里分别获取RGB值的，红，绿，蓝 的值
-                    int rgb = image.getRGB(i, j);
+                    Integer rgb = image.getRGB(i, j);
                     int redV = (rgb & 0xff0000) >> 16;
                     int greenV = (rgb & 0xff00) >> 8;
                     int blueV = (rgb & 0xff);
@@ -368,7 +369,6 @@ public class ByteDance extends ChromeSupport {
 
                     boolean isWhite = redV > 230 && greenV > 230 && blueV > 230;
                     boolean leftAndRightObvious = (i + 5 < width && isObviousWidth(image, i + 5, j)) || (i - 5 > 0 && isObviousWidth(image, i - 5, j));
-
 
                     if (isWhite && leftAndRightObvious) {
                         widthEdgeList.add(i);
@@ -424,21 +424,20 @@ public class ByteDance extends ChromeSupport {
         double originRate = rate;
         if (rate < 0.45) {
             rate += 0.01;
-        }
-        if (rate >= 0.45 && rate < 0.5) {
+        } else if (rate >= 0.45 && rate < 0.5) {
             rate += 0;
         }  else if (rate >= 0.5 && rate < 0.6) {
-            rate += 0.01;
+            rate += 0.011;
         } else if (rate >= 0.6 && rate < 0.7) {
-            rate += 0.02;
+            rate += 0.015;
         } else if (rate >= 0.7 && rate < 0.75){
-            rate += 0.03;
+            rate += 0.02;
         } else if (rate >= 0.75 && rate < 0.8){
-            rate += 0.04;
+            rate += 0.028;
         } else if (rate > 0.8) {
-            rate += 0.05;
+            rate += 0.033;
         } else if (rate > 0.9) {
-            rate += 0.06;
+            rate += 0.04;
         }
         LogUtils.print("kill robot slide rate %s, zoom rate %s", originRate, rate);
         return rate;
@@ -473,10 +472,7 @@ public class ByteDance extends ChromeSupport {
         String imageUrl = "https://p9-security.byteimg.com/img/rc-captcha/slide_82e8b4dfecf65a20ae0095d23fe1e29d7a1f729a_1.jpg~tplv-obj.image";
         ByteDance byteDance = new ByteDance();
 
-        ImageDownload imageDownload = new ImageDownload();
-        imageDownload.dowloadImage(imageUrl, CURRENT_ROBOT_TEST_IMAGE);
-        double slideRate = byteDance.getSlideRate(CURRENT_ROBOT_TEST_IMAGE);
-        System.out.println(slideRate);
+        System.out.println(byteDance.getRandomStep2(200));
     }
 
     private void openMangePage() {

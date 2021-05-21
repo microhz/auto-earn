@@ -1,7 +1,5 @@
 package com.auto;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.auto.bytedance.ByteDance;
 import com.auto.common.ChromeSupport;
 import com.auto.common.LogUtils;
@@ -104,8 +102,8 @@ public class App {
         ChromeSupport.clearBatchDir();
         ByteDance byteDance = new ByteDance();
         try {
-//            InstagramClient instagramClient = new InstagramClient();
-//            instagramClient.batchDownloadFromConfig();
+            InstagramClient instagramClient = new InstagramClient();
+            instagramClient.batchDownloadFromConfig();
 
             byteDance.uploadFromConfig();
 

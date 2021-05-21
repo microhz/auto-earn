@@ -428,7 +428,7 @@ public class Actions {
     }
 
     return tick(
-        defaultMouse.createPointerMove(Duration.ofMillis(50), Origin.pointer(), xOffset, yOffset));
+        defaultMouse.createPointerMove(Duration.ofMillis(0), Origin.pointer(), xOffset, yOffset));
   }
 
   /**
