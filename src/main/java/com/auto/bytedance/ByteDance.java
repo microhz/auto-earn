@@ -37,17 +37,16 @@ public class ByteDance extends ChromeSupport {
     private static final String TOUTIAO_PAGE = "https://sso.toutiao.com/login/";
     private static final String CURRENT_ROBOT_TEST_IMAGE = "robot-test";
     private static final String MANAGE_PAGE_URL = "https://mp.toutiao.com/profile_v3/xigua/content-analysis";
-    //    private static final String USER_NAME = "13018937935";
     private  static String userName;
     private static String password;
 
     public static void setAccount(String accountName) {
         String name = null;
-        if (accountName.equals("zn")) {
-            name = "bytedance-zn";
+        if (accountName.equals("jihai")) {
+            name = "bytedance-jihai";
 
-        } else if (accountName.equals("mpc")) {
-            name = "bytedance-mpc";
+        } else if (accountName.equals("jihai2")) {
+            name = "bytedance-jihia2";
         } else {
             throw new RuntimeException();
         }
@@ -488,6 +487,7 @@ public class ByteDance extends ChromeSupport {
         String[] list = file.list();
         if (list.length == 0) {
             LogUtils.print("没有可以上传的文件");
+            return ;
         }
 
         ArrayList<String> fileNameList = Lists.newArrayList(list);

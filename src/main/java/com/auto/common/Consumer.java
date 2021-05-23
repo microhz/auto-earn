@@ -7,5 +7,6 @@ package com.auto.common;
  */
 @FunctionalInterface
 public interface Consumer {
+
     void consume();
 }

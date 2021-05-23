@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  * @date : 2020/6/20
  * @description :
  */
-public class InstagramClient extends ChromeSupport {
+public class Instagram extends ChromeSupport {
 
     private static String USER_NAME;
     private static String PASSWORD;
@@ -201,7 +201,6 @@ public class InstagramClient extends ChromeSupport {
     }
 
     public void batchDownloadFromConfig() throws IOException {
-
         List<ImageVideoBO> imageVideoBOList = convert2ImageVideo(FileUtils.readFileToString(new ClassPathResource("img.text").getFile(), Charset.defaultCharset()));
         List<ImageVideoBO> videoBOList = convert2ImageVideo(FileUtils.readFileToString(new ClassPathResource("video.text").getFile(), Charset.defaultCharset()));
         init();

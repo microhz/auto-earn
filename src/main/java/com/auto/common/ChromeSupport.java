@@ -24,8 +24,9 @@ import java.util.List;
  */
 public abstract class ChromeSupport {
 
-    protected static final String YOUTUBE_PATH_PREPARE_PUBLISH = "/Users/mapeichuan/Downloads/auto-earn-dowload/video/preparePublish/";;
-    protected static final String BATCH_UPDATE_PATH = "/Users/mapeichuan/Downloads/auto-earn-dowload/batch/";
+    protected static final String YOUTUBE_PATH_PREPARE_PUBLISH = "/Users/jihai/Downloads/auto-earn-dowload/video/preparePublish/";;
+
+    protected static final String BATCH_UPDATE_PATH = "/Users/jihai/Downloads/auto-earn-dowload/batch/";
 
     protected static final String homeDir = System.getProperty("user.home");
 
@@ -53,9 +54,9 @@ public abstract class ChromeSupport {
      */
     public static final long PAEG_LOADING_WAITING_TIME = 4000;
 
-    public static final String INS_PATH = "/Users/mapeichuan/Downloads/auto-earn-dowload/image/";
+    public static final String INS_PATH = "/Users/jihai/Downloads/auto-earn-dowload/image/";
 
-    public static String YOUTUBE_PATH_ORIGIN = "/Users/mapeichuan/Downloads/auto-earn-dowload/video/origin/";
+    public static String YOUTUBE_PATH_ORIGIN = "/Users/jihai/Downloads/auto-earn-dowload/video/origin/";
 
     public static final long SHORT_WAITING_LOADING = 1000;
 
@@ -88,13 +89,10 @@ public abstract class ChromeSupport {
     }
 
     public void init() throws IOException {
-        System.setProperty("webdriver.chrome.driver", "/Users/mapeichuan/github/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/jihai/github/chromedriver");
         ChromeDriverService chromeDriverService = new ChromeDriverService.Builder().usingPort(8081).build();
         chromeDriverService.start();
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("excludeSwitches", Lists.newArrayList("enable-automation"));
-        options.addArguments("--disable-blink-features=AutomationControlled");
-        webDriver = new ChromeDriver(chromeDriverService, options);
+        webDriver = new ChromeDriver(chromeDriverService);
     }
 
     /**

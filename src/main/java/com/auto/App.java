@@ -3,7 +3,7 @@ package com.auto;
 import com.auto.bytedance.ByteDance;
 import com.auto.common.ChromeSupport;
 import com.auto.common.LogUtils;
-import com.auto.instagram.InstagramClient;
+import com.auto.instagram.Instagram;
 import com.auto.twitter.Twitter;
 import com.auto.youtube.Youtube;
 import com.github.kiulian.downloader.YoutubeException;
@@ -20,62 +20,37 @@ import java.util.List;
  */
 public class App {
 
-
-    // TODO ins 视频下载，自动翻页还没做
-    // TODO 真正自动化， 无需干预，部署到服务器上
-    // TODO 自动打开运营后台查看
-    // TODO  大视频文件 SSL peer shut down incorrectly 问题
-    // TODO 单个视频页面多视频问题
-    // TODO 视频素材卖钱
-    // TODO 木马病毒
-    // TODO 刷单赚钱?
-    // TODO 搭建wifi进行嗅探
-    // TODO 养粉丝卖钱
+    // TODO 头条滑动验证码AI识别破解
+    // TODO ins视频分片拼接问题
     // 视频批量
     public static void main(String[] args) {
         try {
             ChromeSupport.clearImage();
-            //https://www.instagram.com/p/CBh26p6pvBq/?utm_source=ig_web_button_share_sheet
-            ByteDance.setAccount("zn");
-            // 下载instagram图片
-//            downloadInstagram("carmaterial");
-
-//            downloadInstagramImageDetail("https://www.instagram.com/p/CCEKsz9okM_/", "tail");
-
-//            // 上传头条, 图片不需要前缀
-//            updateToutaioImage(Lists.newArrayList("tail"), "#兰博基尼 野牛出圈");
-
-//            autoDownloadAndUpload();
+            ByteDance.setAccount("jihai");
             autoDownloadAndUpload();
-
-//            testDT();
-
-//            // 下载youtube视频
-//            downloadYoutube("pc27fivPszM", "杭州4分钟", 2160, "杭州");
-
-
-//            downloadYoutube("6tUWYXe9qbY", "这车是活的", 720, "汽车油管");
-
-//            PingSupport.ping("www.baidu.com");
-//
-//            // 上传头条视频 TODO 下载进度条
-//            updateToutiaoVideo("印度6x6", "奔跑在印度街头的奔驰6x6，周围的车都是弟弟", true);
-//            https://www.instagram.com/p/CB8suMbB4EW/?utm_source=ig_web_button_share_sheet
-
-//            downLoadInstagramVideo("https://www.instagram.com/p/CCEFvdWHSre/?utm_source=ig_web_button_share_sheet", "v12");
-//
-//            updateToutiaoVideo("v12-0", "这兰博基尼自动钥匙如何，感觉太酷炫了", true);
-
-//            downloadTwitterImage("thesupercar_sqd,1275698368728178688", "2");
-
-//            updateToutaioImage("2", "#BMW 这尾巴气势逼人啊");
-
-//             batchUpdate(5, "");
-
         } catch (Throwable e) {
             LogUtils.errorPrint(e, "系统异常");
         }
+    }
+    /**
+     * 根据配置文件
+     */
+    private static void autoDownloadAndUpload() {
+        ChromeSupport.clearBatchDir();
+        ByteDance byteDance = new ByteDance();
+        Instagram instagram = new Instagram();
+        try {
 
+            instagram.batchDownloadFromConfig();
+
+            byteDance.uploadFromConfig();
+
+            LogUtils.print("上传完毕");
+        } catch (Exception e) {
+            LogUtils.errorPrint(e, "批量上传失败");
+        } finally {
+            byteDance.closeDriver();
+        }
     }
 
     private static void downloadYoutube(String url, String fileName, int pixel, String dir) throws Exception {
@@ -95,25 +70,7 @@ public class App {
     }
 
 
-    /**
-     * 根据配置文件
-     */
-    private static void autoDownloadAndUpload() {
-        ChromeSupport.clearBatchDir();
-        ByteDance byteDance = new ByteDance();
-        try {
-            InstagramClient instagramClient = new InstagramClient();
-            instagramClient.batchDownloadFromConfig();
 
-            byteDance.uploadFromConfig();
-
-            LogUtils.print("上传完毕");
-        } catch (Exception e) {
-            LogUtils.errorPrint(e, "批量上传失败");
-        } finally {
-            byteDance.closeDriver();
-        }
-    }
 
     private static void downloadYoutube(String videoId, String fileName, int quantity) throws Exception {
         Youtube youtube = new Youtube();
@@ -148,13 +105,13 @@ public class App {
     }
 
     private static void downloadInstagramImageDetail(String imageDetailUrl, String fileName) {
-        InstagramClient instagramClient = new InstagramClient();
-        instagramClient.downloadDetail(imageDetailUrl.split("/")[4], fileName);
+        Instagram instagram = new Instagram();
+        instagram.downloadDetail(imageDetailUrl.split("/")[4], fileName);
     }
 
     private static void downLoadInstagramVideo(String videlPageUrl, String fileName) {
-        InstagramClient instagramClient = new InstagramClient();
-        instagramClient.downloadVideo(videlPageUrl.split("/")[4], fileName);
+        Instagram instagram = new Instagram();
+        instagram.downloadVideo(videlPageUrl.split("/")[4], fileName);
 
     }
 
@@ -217,8 +174,8 @@ public class App {
     }
 
     private static void downloadInstagram(String userPage) {
-        InstagramClient instagramClient = new InstagramClient();
-        instagramClient.downloadUserPage(userPage);
+        Instagram instagram = new Instagram();
+        instagram.downloadUserPage(userPage);
     }
 }
 

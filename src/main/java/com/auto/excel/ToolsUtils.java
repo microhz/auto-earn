@@ -31,7 +31,7 @@ public class ToolsUtils {
         cell5.setCellValue("卡密发送时间");
 
 
-        File file = FileUtils.getFile("/Users/mapeichuan/gejia/auto-earn/src/main/resources/draft.txt");
+        File file = FileUtils.getFile("/Users/jihai/gejia/auto-earn/src/main/resources/draft.txt");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 
         String line = null;
@@ -58,6 +58,6 @@ public class ToolsUtils {
             if (line.split("卡密发送时间:").length > 1) c5.setCellValue(line.split("卡密发送时间:")[1]);
         }
 
-        xssfSheets.write(new FileOutputStream(new File("/Users/mapeichuan/gejia/auto-earn/src/main/resources/output.xls")));
+        xssfSheets.write(new FileOutputStream(new File("/Users/jihai/gejia/auto-earn/src/main/resources/output.xls")));
     }
 }

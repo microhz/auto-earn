@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOG_HOME" value="/Users/mapeichuan/gejia/auto-earn"/>
+    <property name="LOG_HOME" value="/Users/jihai/gejia/auto-earn"/>
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
     <property name="FILE_LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss}] [%level] [%X{traceId}] [%-22thread]  %logger{35}.%-5L - %msg %n"/>

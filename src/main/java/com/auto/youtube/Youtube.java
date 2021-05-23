@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
  */
 public class Youtube extends ChromeSupport {
 
-    private static final String FFMPEG_PATH = "/Users/mapeichuan/Downloads/auto-earn-dowload/video/origin/ffmpeg";
+    private static final String FFMPEG_PATH = "/Users/jihai/Downloads/auto-earn-dowload/video/origin/ffmpeg";
 
     public void downloadVideo(String videoId) throws IOException, YoutubeException {
         downloadVideo(videoId, "", true);
