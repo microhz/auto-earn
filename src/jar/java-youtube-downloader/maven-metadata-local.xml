@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.github.micro</groupId>
+  <artifactId>java-youtube-downloader</artifactId>
+  <versioning>
+    <versions>
+      <version>3.0.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20200710070459</lastUpdated>
+  </versioning>
+</metadata>

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Jul 10 15:04:59 CST 2020
+java-youtube-downloader-3.0.0-SNAPSHOT.jar>=
+java-youtube-downloader-3.0.0-SNAPSHOT-sources.jar>=
+java-youtube-downloader-3.0.0-SNAPSHOT.pom>=
